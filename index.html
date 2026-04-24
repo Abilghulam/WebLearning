@@ -1,0 +1,3417 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Pembelajaran Interaktif | SMK Yapalis Krian</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+      :root {
+        --primary: #0f4c81;
+        --primary-light: #1a6bb5;
+        --accent: #00c2a8;
+        --accent2: #ff6b35;
+        --bg: #f0f4f8;
+        --surface: #ffffff;
+        --surface2: #ebf1f8;
+        --text: #0d1b2a;
+        --text-muted: #5a7184;
+        --border: #d0dde8;
+        --gradient: linear-gradient(
+          135deg,
+          #0f4c81 0%,
+          #1a6bb5 50%,
+          #00c2a8 100%
+        );
+        --radius: 16px;
+        --shadow: 0 4px 24px rgba(15, 76, 129, 0.1);
+        --shadow-lg: 0 12px 48px rgba(15, 76, 129, 0.18);
+        --font-display: "Syne", sans-serif;
+        --font-body: "Plus Jakarta Sans", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* ── NAVIGATION ── */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        padding: 0 24px;
+      }
+      .nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+        gap: 12px;
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-display);
+        font-size: 1rem;
+        font-weight: 800;
+        color: var(--primary);
+        white-space: nowrap;
+      }
+      .nav-logo .logo-icon {
+        width: 36px;
+        height: 36px;
+        background: var(--gradient);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        flex-shrink: 0;
+      }
+      .nav-tabs {
+        display: flex;
+        gap: 4px;
+        background: var(--surface2);
+        padding: 4px;
+        border-radius: 12px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .nav-tabs::-webkit-scrollbar {
+        display: none;
+      }
+      .nav-tab {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        border-radius: 8px;
+        border: none;
+        background: transparent;
+        font-family: var(--font-body);
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+      .nav-tab:hover {
+        color: var(--primary);
+        background: white;
+      }
+      .nav-tab.active {
+        background: var(--primary);
+        color: white;
+        box-shadow: 0 2px 8px rgba(15, 76, 129, 0.3);
+      }
+      .nav-tab i {
+        width: 14px;
+        height: 14px;
+      }
+
+      /* ── PAGES ── */
+      .page {
+        display: none;
+        animation: fadeIn 0.4s ease;
+      }
+      .page.active {
+        display: block;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── HERO ── */
+      .hero {
+        background: var(--gradient);
+        padding: 64px 24px 80px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+      .hero-inner {
+        max-width: 860px;
+        margin: 0 auto;
+        position: relative;
+        text-align: center;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: white;
+        padding: 6px 16px;
+        border-radius: 100px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        backdrop-filter: blur(8px);
+      }
+      .hero h1 {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-weight: 800;
+        color: white;
+        line-height: 1.15;
+        margin-bottom: 16px;
+      }
+      .hero-sub {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 32px;
+      }
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+      .hero-chip {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        backdrop-filter: blur(8px);
+      }
+
+      /* ── CARDS GRID ── */
+      .panel-section {
+        max-width: 1100px;
+        margin: -40px auto 0;
+        padding: 0 24px 48px;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* TAB MENU */
+      .panel-tabs {
+        display: flex;
+        gap: 4px;
+        background: var(--surface2);
+        padding: 4px;
+        border-radius: 12px;
+        width: fit-content;
+        margin: 20px auto 20px;
+      }
+
+      .panel-btn {
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: none;
+        background: transparent;
+        font-family: var(--font-body);
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .panel-btn:hover {
+        background: white;
+        color: var(--primary);
+      }
+
+      .panel-btn.active {
+        background: var(--primary);
+        color: white;
+        box-shadow: 0 2px 8px rgba(15, 76, 129, 0.3);
+      }
+
+      /* CONTENT */
+      .panel-content {
+        display: none;
+        background: var(--surface);
+        padding: 22px 24px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        animation: fadeIn 0.35s ease;
+        max-width: 860px;
+        margin: 0 auto;
+      }
+
+      .panel-content.active {
+        display: block;
+      }
+
+      /* PANEL TITLE (LEFT + ICON) */
+      .panel-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--text);
+
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      /* HAPUS garis lama */
+      .panel-title::after {
+        display: none;
+      }
+
+      /* ICON STYLE */
+      .panel-title i {
+        width: 18px;
+        height: 18px;
+        color: var(--primary);
+        flex-shrink: 0;
+      }
+
+      /* LIST */
+      .panel-content ul {
+        padding-left: 18px;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: #374151;
+      }
+
+      .panel-content ul li {
+        margin-bottom: 6px;
+      }
+
+      .panel-content .tag-list {
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      /* CENTER TAG */
+      .center {
+        justify-content: center;
+      }
+
+      .quick-start {
+        max-width: 1100px;
+        margin: 10px auto 60px;
+        padding: 0 24px;
+        text-align: center;
+      }
+
+      .quick-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        margin-top: 20px;
+      }
+
+      .quick-card {
+        background: var(--surface);
+        border-radius: var(--radius);
+        padding: 20px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        cursor: pointer;
+        transition: 0.25s;
+      }
+
+      .quick-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .quick-card i {
+        width: 28px;
+        height: 28px;
+        color: var(--primary);
+        margin-bottom: 10px;
+      }
+
+      .quick-card h4 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .quick-card p {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      @media (max-width: 768px) {
+        .quick-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* ANIMATION */
+      @keyframes fade {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── SECTION WRAPPER ── */
+      .section-wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px 24px 60px;
+      }
+      .section-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 32px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid var(--border);
+      }
+      .section-icon {
+        width: 48px;
+        height: 48px;
+        background: var(--gradient);
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        flex-shrink: 0;
+      }
+      .section-header h2 {
+        font-family: var(--font-display);
+        font-size: clamp(1.4rem, 3vw, 1.9rem);
+        font-weight: 800;
+        color: var(--primary);
+      }
+      .section-header p {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-top: 4px;
+      }
+      /* TITLE */
+      .section-title {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--text);
+        letter-spacing: -0.01em;
+        margin-bottom: 6px;
+        position: relative;
+      }
+
+      /* GARIS HALUS DI BAWAH (ACCENT) */
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 3px;
+        margin: 8px auto 0;
+        border-radius: 10px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        opacity: 0.6;
+      }
+
+      /* SUBTITLE */
+      .section-sub {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        max-width: 520px;
+        margin: 0 auto;
+        opacity: 0.9;
+      }
+
+      /* ── MATERI PAGE ── */
+      .materi-nav {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 28px;
+      }
+      .materi-btn {
+        padding: 8px 18px;
+        border-radius: 100px;
+        border: 2px solid var(--border);
+        background: white;
+        font-family: var(--font-body);
+        font-size: 0.83rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .materi-btn.active,
+      .materi-btn:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: white;
+      }
+      .materi-content {
+        display: none;
+      }
+      .materi-content.active {
+        display: block;
+        animation: fadeIn 0.35s ease;
+      }
+      .materi-card {
+        background: white;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        margin-bottom: 20px;
+      }
+      .materi-card-header {
+        background: var(--gradient);
+        padding: 20px 24px;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .materi-card-header h3 {
+        font-family: var(--font-display);
+        font-size: 1.1rem;
+        font-weight: 800;
+      }
+      .materi-card-header p {
+        font-size: 0.82rem;
+        opacity: 0.85;
+        margin-top: 2px;
+      }
+      .materi-card-body {
+        padding: 24px;
+      }
+      .materi-card-body h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin: 20px 0 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .materi-card-body h4:first-child {
+        margin-top: 0;
+      }
+      .materi-card-body p {
+        font-size: 0.9rem;
+        line-height: 1.75;
+        color: #374151;
+        margin-bottom: 12px;
+      }
+      .concept-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+        margin: 14px 0;
+      }
+      .concept-item {
+        background: var(--surface2);
+        border-left: 3px solid var(--accent);
+        border-radius: 8px;
+        padding: 12px 14px;
+        font-size: 0.85rem;
+      }
+      .concept-item strong {
+        display: block;
+        color: var(--primary);
+        margin-bottom: 4px;
+        font-size: 0.83rem;
+      }
+      .highlight-box {
+        background: linear-gradient(135deg, #ebf3ff, #e0f9f6);
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin: 14px 0;
+        border-left: 4px solid var(--accent);
+        font-size: 0.88rem;
+        line-height: 1.7;
+      }
+      .code-block {
+        background: #0d1b2a;
+        color: #a8d8ea;
+        border-radius: 10px;
+        padding: 16px 20px;
+        font-family: "Courier New", monospace;
+        font-size: 0.82rem;
+        line-height: 1.6;
+        overflow-x: auto;
+        margin: 12px 0;
+      }
+      .code-block .kw {
+        color: #ff79c6;
+      }
+      .code-block .str {
+        color: #f1fa8c;
+      }
+      .code-block .cm {
+        color: #6272a4;
+      }
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 10px 0;
+      }
+      .tag {
+        padding: 6px 14px;
+        border-radius: 100px;
+        font-size: 0.78rem;
+        font-weight: 600;
+      }
+      .tag-blue {
+        background: #ebf3ff;
+        color: var(--primary);
+      }
+      .tag-teal {
+        background: #e0f9f6;
+        color: #007a6c;
+      }
+      .tag-orange {
+        background: #fff0eb;
+        color: #c44b1a;
+      }
+      .accordion {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 8px;
+      }
+      .accordion-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 18px;
+        cursor: pointer;
+        background: white;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: background 0.2s;
+      }
+      .accordion-header:hover {
+        background: var(--surface2);
+      }
+      .accordion-header i {
+        transition: transform 0.25s;
+      }
+      .accordion.open .accordion-header i {
+        transform: rotate(180deg);
+      }
+      .accordion-body {
+        display: none;
+        padding: 14px 18px;
+        background: var(--surface2);
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: #374151;
+        border-top: 1px solid var(--border);
+      }
+      .accordion.open .accordion-body {
+        display: block;
+      }
+
+      /* ── JADWAL ── */
+      .jadwal-table-wrap {
+        background: white;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .jadwal-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .jadwal-table th {
+        background: var(--gradient);
+        color: white;
+        padding: 14px 16px;
+        text-align: left;
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .jadwal-table td {
+        padding: 14px 16px;
+        font-size: 0.88rem;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+      .jadwal-table tr:last-child td {
+        border-bottom: none;
+      }
+      .jadwal-table tr:hover td {
+        background: var(--surface2);
+      }
+      .pertemuan-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: white;
+        font-weight: 800;
+        font-size: 0.82rem;
+        flex-shrink: 0;
+      }
+      .status-badge {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+      .status-teori {
+        background: #ebf3ff;
+        color: var(--primary);
+      }
+      .status-praktik {
+        background: #e0f9f6;
+        color: #007a6c;
+      }
+      .status-proyek {
+        background: #fff0eb;
+        color: #c44b1a;
+      }
+      .status-presentasi {
+        background: #f3eeff;
+        color: #6a3bd4;
+      }
+      .pertemuan-cell {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .timeline-card {
+        background: white;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        padding: 0 24px;
+        margin-bottom: 0;
+      }
+      .timeline-item {
+        display: flex;
+        gap: 20px;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--border);
+        align-items: flex-start;
+      }
+      .timeline-item:last-child {
+        border-bottom: none;
+      }
+      .timeline-num {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--gradient);
+        color: white;
+        font-weight: 800;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .timeline-info h4 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+      .timeline-info p {
+        font-size: 0.83rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+      .timeline-info .meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 6px;
+      }
+
+      /* ── TUTORIAL ── */
+      .tutorial-tabs {
+        display: flex;
+        gap: 0;
+        background: var(--surface2);
+        border-radius: 12px;
+        padding: 4px;
+        margin-bottom: 28px;
+        width: fit-content;
+      }
+      .tutorial-tab-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 9px 18px;
+        border-radius: 8px;
+        border: none;
+        background: transparent;
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .tutorial-tab-btn.active {
+        background: var(--primary);
+        color: white;
+      }
+      .tutorial-section {
+        display: none;
+      }
+      .tutorial-section.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+      }
+      .video-card {
+        background: white;
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+      }
+      .video-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+      .video-thumb {
+        position: relative;
+        aspect-ratio: 16/9;
+        background: #0d1b2a;
+        cursor: pointer;
+        overflow: hidden;
+      }
+      .video-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .video-play {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.35);
+        transition: background 0.2s;
+      }
+      .video-thumb:hover .video-play {
+        background: rgba(0, 0, 0, 0.55);
+      }
+      .play-btn {
+        width: 52px;
+        height: 52px;
+        background: #ff0000;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        box-shadow: 0 4px 16px rgba(255, 0, 0, 0.5);
+        transition: transform 0.2s;
+      }
+      .video-thumb:hover .play-btn {
+        transform: scale(1.1);
+      }
+      .video-info {
+        padding: 16px;
+      }
+      .video-info h4 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 6px;
+        line-height: 1.4;
+      }
+      .video-info p {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+      .video-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+      .video-channel {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .watch-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        background: #ff0000;
+        color: white;
+        border-radius: 6px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .watch-btn:hover {
+        background: #cc0000;
+      }
+      .resource-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+      }
+      .resource-card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .resource-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+      }
+      .resource-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: white;
+      }
+      .ri-pdf {
+        background: #e53935;
+      }
+      .ri-link {
+        background: var(--primary);
+      }
+      .ri-blog {
+        background: #ff6b35;
+      }
+      .resource-info h4 {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+      .resource-info p {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+        margin-bottom: 8px;
+      }
+      .resource-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--primary);
+        text-decoration: none;
+      }
+      .resource-link:hover {
+        text-decoration: underline;
+      }
+
+      /* ── PROYEK ── */
+      .proyek-hero {
+        background: linear-gradient(135deg, #0d1b2a 0%, #0f4c81 100%);
+        border-radius: var(--radius);
+        padding: 36px 32px;
+        margin-bottom: 28px;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+      .proyek-hero::after {
+        content: "</>";
+        position: absolute;
+        right: 32px;
+        bottom: -16px;
+        font-family: var(--font-display);
+        font-size: 7rem;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.05);
+        line-height: 1;
+      }
+      .proyek-hero .case-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(0, 194, 168, 0.2);
+        border: 1px solid rgba(0, 194, 168, 0.4);
+        color: #00e5d2;
+        padding: 5px 14px;
+        border-radius: 100px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        margin-bottom: 14px;
+      }
+      .proyek-hero h2 {
+        font-family: var(--font-display);
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+        font-weight: 800;
+        margin-bottom: 10px;
+      }
+      .proyek-hero p {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        line-height: 1.7;
+        max-width: 680px;
+      }
+      .studi-kasus-card {
+        background: white;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        margin-bottom: 24px;
+      }
+      .studi-header {
+        background: linear-gradient(135deg, #fff0eb, #ffe4d9);
+        padding: 20px 24px;
+        border-bottom: 1px solid #ffd5c2;
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+      .studi-icon {
+        width: 44px;
+        height: 44px;
+        background: var(--accent2);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        flex-shrink: 0;
+      }
+      .studi-header h3 {
+        font-size: 1rem;
+        font-weight: 800;
+        color: #8b3a1a;
+      }
+      .studi-header p {
+        font-size: 0.82rem;
+        color: #a04520;
+        margin-top: 2px;
+      }
+      .studi-body {
+        padding: 24px;
+      }
+      .studi-body p {
+        font-size: 0.9rem;
+        line-height: 1.75;
+        color: #374151;
+        margin-bottom: 14px;
+      }
+      .studi-body strong {
+        color: var(--primary);
+      }
+      .steps-container {
+        counter-reset: step;
+      }
+      .step-card {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+        background: white;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        padding: 20px;
+        box-shadow: var(--shadow);
+        position: relative;
+      }
+      .step-card::before {
+        counter-increment: step;
+        content: counter(step);
+        width: 36px;
+        height: 36px;
+        background: var(--gradient);
+        color: white;
+        border-radius: 50%;
+        font-weight: 800;
+        font-size: 0.88rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .step-content h4 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 6px;
+      }
+      .step-content p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+      .step-content .step-meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+      .deliverable-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+        margin: 20px 0;
+      }
+      .deliverable-item {
+        background: var(--surface2);
+        border-radius: 10px;
+        padding: 16px;
+        border-left: 4px solid var(--accent);
+        font-size: 0.85rem;
+      }
+      .deliverable-item strong {
+        display: block;
+        color: var(--primary);
+        margin-bottom: 4px;
+        font-size: 0.82rem;
+      }
+
+      /* ── PENGUMPULAN ── */
+      .collect-card {
+        background: white;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        padding: 32px;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+      .collect-card h3 {
+        font-family: var(--font-display);
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: var(--primary);
+        margin-bottom: 6px;
+      }
+      .collect-card > p {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        margin-bottom: 28px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .form-group label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 8px;
+      }
+      .form-group label .required {
+        color: #e53935;
+      }
+      .form-input,
+      .form-select,
+      .form-textarea {
+        width: 100%;
+        padding: 11px 14px;
+        border: 2px solid var(--border);
+        border-radius: 10px;
+        font-family: var(--font-body);
+        font-size: 0.88rem;
+        color: var(--text);
+        background: var(--surface);
+        outline: none;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .form-input:focus,
+      .form-select:focus,
+      .form-textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.12);
+      }
+      .form-textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+      .upload-area {
+        border: 2px dashed var(--border);
+        border-radius: 12px;
+        padding: 32px 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        background: var(--surface2);
+      }
+      .upload-area:hover,
+      .upload-area.drag {
+        border-color: var(--primary);
+        background: #ebf3ff;
+      }
+      .upload-area i {
+        color: var(--primary);
+        margin-bottom: 10px;
+      }
+      .upload-area p {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+      }
+      .upload-area span {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        display: block;
+        margin-top: 4px;
+      }
+      .submit-btn {
+        width: 100%;
+        padding: 14px;
+        background: var(--gradient);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-family: var(--font-body);
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition:
+          opacity 0.2s,
+          transform 0.15s;
+        box-shadow: 0 4px 16px rgba(15, 76, 129, 0.35);
+        margin-top: 8px;
+      }
+      .submit-btn:hover {
+        opacity: 0.92;
+        transform: translateY(-1px);
+      }
+      .submit-btn:active {
+        transform: scale(0.98);
+      }
+      .info-note {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        background: var(--surface2);
+        border-radius: 10px;
+        padding: 14px 16px;
+        font-size: 0.83rem;
+        color: var(--text-muted);
+        margin-bottom: 20px;
+        border-left: 3px solid var(--accent);
+      }
+      .info-note i {
+        color: var(--accent);
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .success-msg {
+        display: none;
+        background: linear-gradient(135deg, #e0f9f6, #d5f5e3);
+        border-radius: 12px;
+        padding: 24px;
+        text-align: center;
+        border: 1px solid #a8e6cf;
+        margin-top: 16px;
+      }
+      .success-msg i {
+        color: #27ae60;
+        margin-bottom: 8px;
+      }
+      .success-msg h4 {
+        color: #1e8449;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+      .success-msg p {
+        color: #2ecc71;
+        font-size: 0.85rem;
+        margin-top: 4px;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 768px) {
+        .nav-inner {
+          padding: 0;
+        }
+        .nav {
+          padding: 0 12px;
+        }
+        .hero {
+          padding: 48px 16px 64px;
+        }
+        .cards-section {
+          padding: 0 16px 40px;
+        }
+        .section-wrap {
+          padding: 28px 16px 48px;
+        }
+        .jadwal-table th:nth-child(3),
+        .jadwal-table td:nth-child(3),
+        .jadwal-table th:nth-child(4),
+        .jadwal-table td:nth-child(4) {
+          display: none;
+        }
+        .collect-card {
+          padding: 20px;
+        }
+        .proyek-hero {
+          padding: 24px 20px;
+        }
+        .proyek-hero::after {
+          font-size: 4rem;
+        }
+      }
+      @media (max-width: 480px) {
+        .nav-tab span {
+          display: none;
+        }
+        .nav-tab {
+          padding: 8px 10px;
+        }
+      }
+
+      /* ── FOOTER ── */
+      .footer {
+        background: var(--text);
+        color: rgba(255, 255, 255, 0.6);
+        text-align: center;
+        padding: 20px;
+        font-size: 0.8rem;
+      }
+      .footer strong {
+        color: white;
+      }
+      .footer-content {
+        max-width: 600px;
+        margin: auto;
+      }
+
+      .footer-title {
+        font-weight: 500;
+        color: #fff;
+        font-size: 0.9rem;
+        margin-bottom: 4px;
+      }
+
+      .footer-sub {
+        font-size: 0.75rem;
+        opacity: 0.7;
+      }
+
+      .footer-copy {
+        font-size: 0.7rem;
+        opacity: 0.5;
+        margin-top: 6px;
+      }
+      .progress-bar {
+        height: 3px;
+        background: var(--gradient);
+        width: 0%;
+        transition: width 0.4s;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+      <div class="nav-inner">
+        <div class="nav-logo">
+          <div class="logo-icon">
+            <i
+              data-lucide="graduation-cap"
+              style="width: 18px; height: 18px"
+            ></i>
+          </div>
+          <span>SMK<span style="color: var(--accent)">YapalisKrian</span></span>
+        </div>
+        <div class="nav-tabs">
+          <button class="nav-tab active" onclick="showPage(event, 'home')">
+            <i data-lucide="home"></i><span>Home</span>
+          </button>
+          <button class="nav-tab" onclick="showPage(event, 'materi')">
+            <i data-lucide="book-open"></i><span>Materi</span>
+          </button>
+          <button class="nav-tab" onclick="showPage(event, 'jadwal')">
+            <i data-lucide="calendar"></i><span>Jadwal</span>
+          </button>
+          <button class="nav-tab" onclick="showPage(event, 'tutorial')">
+            <i data-lucide="play-circle"></i><span>Tutorial</span>
+          </button>
+          <button class="nav-tab" onclick="showPage(event, 'proyek')">
+            <i data-lucide="briefcase"></i><span>Proyek</span>
+          </button>
+          <button class="nav-tab" onclick="showPage(event, 'pengumpulan')">
+            <i data-lucide="upload-cloud"></i><span>Kumpul</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ═══════════ PAGE: HOME ═══════════ -->
+    <div class="page active" id="page-home">
+      <div class="hero">
+        <div class="hero-inner">
+          <div class="hero-badge">
+            <i data-lucide="zap" style="width: 13px; height: 13px"></i>
+            Media Pembelajaran Interaktif
+          </div>
+          <h1>Pengembangan Desain Website<br />Berbasis Studi Kasus Nyata</h1>
+          <p class="hero-sub">
+            Belajar membangun solusi digital untuk permasalahan dunia nyata
+            melalui pendekatan PJBL yang terstruktur dan kolaboratif
+          </p>
+          <div class="hero-meta">
+            <div class="hero-chip">
+              <i data-lucide="users" style="width: 14px; height: 14px"></i>
+              X DKV 2
+            </div>
+            <div class="hero-chip">
+              <i data-lucide="book" style="width: 14px; height: 14px"></i>
+              UI/UX Desain
+            </div>
+            <div class="hero-chip">
+              <i data-lucide="calendar" style="width: 14px; height: 14px"></i>
+              Tahun Ajaran 2025/2026
+            </div>
+            <div class="hero-chip">
+              <i data-lucide="map-pin" style="width: 14px; height: 14px"></i>
+              SMK Yapalis Krian
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MENU -->
+      <div class="panel-section">
+        <div class="panel-tabs">
+          <button
+            class="panel-btn active"
+            onclick="showPanel(event, 'capaian')"
+          >
+            Capaian Pembelajaran
+          </button>
+          <button class="panel-btn" onclick="showPanel(event, 'tujuan')">
+            Tujuan Proyek
+          </button>
+          <button class="panel-btn" onclick="showPanel(event, 'tools')">
+            Tools
+          </button>
+          <button class="panel-btn" onclick="showPanel(event, 'luaran')">
+            Luaran Proyek
+          </button>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="panel-content active" id="panel-capaian">
+          <h3 class="panel-title">
+            <i data-lucide="target"></i>Capaian Pembelajaran
+          </h3>
+          <ul>
+            <li>
+              Peserta didik mampu memahami konsep website, UI/UX, dan design
+              thinking
+            </li>
+            <li>
+              Peserta didik mampu membuat prototipe website interaktif di Figma
+              dari low-fidelity ke high-fidelity dengan prinsip desain yang baik
+            </li>
+            <li>
+              Peserta didik mampu menunjukkan sikap kolaboratif, tanggung jawab,
+              kreativitas, dan percaya diri dalam kerja tim
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel-content" id="panel-tujuan">
+          <h3 class="panel-title"><i data-lucide="flag"></i>Tujuan Proyek</h3>
+          <ul>
+            <li>
+              Peserta didik mampu merancang prototipe website UMKM berbasis
+              prinsip UI/UX menggunakan Figma
+            </li>
+            <li>
+              Peserta didik mampu mengembangkan desain menjadi clickable
+              prototype yang dapat diuji
+            </li>
+            <li>
+              Peserta didik mampu bekerja sama dalam tim melalui tahapan proyek
+              secara terstruktur
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel-content" id="panel-tools">
+          <h3 class="panel-title">
+            <i data-lucide="wrench"></i>Tools yang Digunakan
+          </h3>
+          <div class="tag-list center">
+            <span class="tag tag-orange">Figma</span>
+            <span class="tag tag-blue">Google Sites</span>
+          </div>
+        </div>
+
+        <div class="panel-content" id="panel-luaran">
+          <h3 class="panel-title">
+            <i data-lucide="package"></i>Luaran Proyek
+          </h3>
+          <ul>
+            <li>Prototype desain UI/UX</li>
+            <li>Link demo Figma</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="quick-start">
+        <h2 class="section-title">Mulai Belajar</h2>
+        <p class="section-sub">
+          Ikuti langkah berikut untuk memulai pembelajaran dengan terarah
+        </p>
+
+        <div class="quick-grid">
+          <div class="quick-card" onclick="showPage(event, 'materi')">
+            <i data-lucide="book-open"></i>
+            <h4>Pelajari Materi</h4>
+            <p>Mulai dari konsep hingga praktek</p>
+          </div>
+
+          <div class="quick-card" onclick="showPage(event, 'jadwal')">
+            <i data-lucide="calendar"></i>
+            <h4>Lihat Jadwal</h4>
+            <p>Ikuti alur pembelajaran</p>
+          </div>
+
+          <div class="quick-card" onclick="showPage(event, 'tutorial')">
+            <i data-lucide="play-circle"></i>
+            <h4>Tonton Tutorial</h4>
+            <p>Pelajari melalui video interaktif</p>
+          </div>
+
+          <div class="quick-card" onclick="showPage(event, 'pengumpulan')">
+            <i data-lucide="upload-cloud"></i>
+            <h4>Kumpulkan Proyek</h4>
+            <p>Upload hasil kerja tim kamu</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ PAGE: MATERI ═══════════ -->
+    <div class="page" id="page-materi">
+      <div class="section-wrap">
+        <div class="section-header">
+          <div class="section-icon">
+            <i data-lucide="book-open" style="width: 22px; height: 22px"></i>
+          </div>
+          <div>
+            <h2>Materi Pembelajaran</h2>
+            <p>Pilih topik materi untuk mulai belajar</p>
+          </div>
+        </div>
+
+        <div class="materi-nav">
+          <button class="materi-btn active" onclick="showMateri(event, 'html')">
+            🌐 Website UMKM
+          </button>
+          <button class="materi-btn" onclick="showMateri(event, 'css')">
+            🎨 UI/UX Design
+          </button>
+          <button class="materi-btn" onclick="showMateri(event, 'js')">
+            🖌️ Figma
+          </button>
+        </div>
+
+        <!-- HTML -->
+        <div class="materi-content active" id="materi-html">
+          <div class="materi-card">
+            <div class="materi-card-header">
+              <div>
+                <i data-lucide="globe" style="width: 24px; height: 24px"></i>
+              </div>
+              <div>
+                <h3>Website UMKM — Pengantar Web Profile</h3>
+                <p>
+                  Konsep Dasar Website · Web Profile UMKM · Tujuan & Struktur
+                </p>
+              </div>
+            </div>
+            <div class="materi-card-body">
+              <h4>
+                <i
+                  data-lucide="info"
+                  style="width: 16px; height: 16px; color: var(--accent)"
+                ></i>
+                Apa itu Website UMKM?
+              </h4>
+              <p>
+                Website UMKM adalah sebuah
+                <strong>halaman web profil digital</strong> yang dirancang
+                khusus untuk mempresentasikan usaha mikro, kecil, dan menengah
+                secara online. Website ini berfungsi seperti "etalase digital"
+                yang dapat diakses siapa saja, kapan saja, dari mana saja —
+                tanpa terbatas jam operasional toko fisik.
+              </p>
+              <div class="highlight-box">
+                💡 <strong>Fakta Penting:</strong> Menurut data Kementerian
+                Koperasi dan UKM, lebih dari 64 juta UMKM di Indonesia hanya
+                sekitar 20% yang memiliki kehadiran digital. Padahal, UMKM yang
+                memiliki website terbukti meningkatkan omzet rata-rata 30–50%
+                dalam satu tahun pertama.
+              </div>
+              <h4>
+                <i
+                  data-lucide="layout"
+                  style="width: 16px; height: 16px; color: var(--accent)"
+                ></i>
+                Jenis-Jenis Website UMKM
+              </h4>
+              <div class="concept-grid">
+                <div class="concept-item">
+                  <strong>Web Profile</strong> Menampilkan profil, sejarah,
+                  visi-misi, dan informasi umum tentang usaha
+                </div>
+                <div class="concept-item">
+                  <strong>Web Katalog</strong> Menampilkan daftar produk/jasa
+                  dengan foto, deskripsi, dan harga
+                </div>
+                <div class="concept-item">
+                  <strong>Landing Page</strong> Halaman tunggal yang fokus pada
+                  satu promosi atau penawaran spesifik
+                </div>
+                <div class="concept-item">
+                  <strong>Web Toko Online</strong> Sistem jual-beli online
+                  dengan keranjang belanja dan pembayaran digital
+                </div>
+              </div>
+              <h4>
+                <i
+                  data-lucide="layers"
+                  style="width: 16px; height: 16px; color: var(--accent)"
+                ></i>
+                Struktur Halaman Web Profile UMKM
+              </h4>
+              <p>
+                Sebuah web profile UMKM yang baik umumnya memiliki halaman dan
+                komponen berikut:
+              </p>
+              <div class="concept-grid">
+                <div class="concept-item">
+                  <strong>🏠 Beranda (Home)</strong> Hero section dengan nama
+                  usaha, tagline menarik, dan tombol CTA (Call to Action)
+                </div>
+                <div class="concept-item">
+                  <strong>👤 Tentang Kami</strong> Sejarah usaha, nilai-nilai,
+                  foto tim, dan kepercayaan yang dibangun
+                </div>
+                <div class="concept-item">
+                  <strong>🛍️ Produk / Layanan</strong> Galeri produk dengan
+                  gambar berkualitas, nama, deskripsi, dan harga
+                </div>
+                <div class="concept-item">
+                  <strong>⭐ Testimoni</strong> Ulasan dan rating dari pelanggan
+                  nyata untuk membangun kepercayaan
+                </div>
+                <div class="concept-item">
+                  <strong>📍 Kontak & Lokasi</strong> Nomor WhatsApp, email,
+                  alamat, peta lokasi, dan jam operasional
+                </div>
+                <div class="concept-item">
+                  <strong>🔗 Media Sosial</strong> Link ke Instagram, TikTok,
+                  Facebook, Tokopedia, atau Shopee
+                </div>
+              </div>
+              <h4>
+                <i
+                  data-lucide="trending-up"
+                  style="width: 16px; height: 16px; color: var(--accent)"
+                ></i>
+                Manfaat Website bagi UMKM
+              </h4>
+              <div class="concept-grid">
+                <div class="concept-item">
+                  <strong>Jangkauan Lebih Luas</strong> Produk bisa ditemukan
+                  oleh pelanggan di seluruh Indonesia, bukan hanya sekitar toko
+                </div>
+                <div class="concept-item">
+                  <strong>Kredibilitas Meningkat</strong> UMKM terlihat lebih
+                  profesional dan terpercaya di mata konsumen
+                </div>
+                <div class="concept-item">
+                  <strong>Promosi 24 Jam</strong> Website bekerja terus
+                  sepanjang waktu tanpa perlu karyawan tambahan
+                </div>
+                <div class="concept-item">
+                  <strong>Mudah Diperbarui</strong> Informasi produk, harga, dan
+                  promo bisa diubah kapan saja
+                </div>
+              </div>
+              <h4>
+                <i
+                  data-lucide="help-circle"
+                  style="width: 16px; height: 16px; color: var(--accent)"
+                ></i>
+                FAQ &amp; Ringkasan
+              </h4>
+              <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                  Apa perbedaan website dan media sosial untuk UMKM?
+                  <i
+                    data-lucide="chevron-down"
+                    style="width: 16px; height: 16px"
+                  ></i>
+                </div>
+                <div class="accordion-body">
+                  Media sosial (Instagram, TikTok) bersifat sementara —
+                  postingan mudah tenggelam, dan kita bergantung pada algoritma
+                  platform. Website adalah
+                  <strong>aset digital permanen</strong> milik sendiri yang bisa
+                  dikustomisasi bebas, tidak dibatasi algoritma, dan lebih mudah
+                  ditemukan di Google. Idealnya, UMKM memiliki keduanya dan
+                  saling terintegrasi.
+                </div>
+              </div>
+              <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                  Apa saja elemen wajib pada web profile UMKM?
+                  <i
+                    data-lucide="chevron-down"
+                    style="width: 16px; height: 16px"
+                  ></i>
+                </div>
+                <div class="accordion-body">
+                  Elemen wajib yang harus ada:
+                  <strong>(1) Logo dan nama usaha</strong> yang jelas,
+                  <strong>(2) Deskripsi singkat</strong> tentang produk/jasa,
+                  <strong>(3) Galeri produk</strong> dengan foto berkualitas,
+                  <strong>(4) Tombol kontak</strong> (WhatsApp/email),
+                  <strong>(5) Informasi lokasi</strong>. Elemen tambahan yang
+                  memperkuat: testimoni pelanggan, sertifikasi, dan cerita
+                  brand.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MATERI 2: UI/UX -->
+        <div class="materi-content" id="materi-css">
+          <div class="materi-card">
+            <div class="materi-card-header">
+              <div>
+                <i data-lucide="palette" style="width: 24px; height: 24px"></i>
+              </div>
+              <div>
+                <h3>UI/UX Design — Desain Antarmuka Website</h3>
+                <p>
+                  User Interface · User Experience · Prinsip & Proses Desain
+                </p>
+              </div>
+            </div>
+            <div class="materi-card-body">
+              <h4>
+                <i
+                  data-lucide="eye"
+                  style="width: 16px; height: 16px; color: var(--accent)"
+                ></i>
+                Apa itu UI dan UX?
+              </h4>
+              <div class="concept-grid">
+                <div class="concept-item">
+                  <strong>UI — User Interface</strong> Segala sesuatu yang
+                  <em>terlihat</em> oleh pengguna: warna, tipografi, ikon,
+                  tombol, tata letak, gambar. UI menjawab pertanyaan "Seperti
+                  apa tampilannya?"
+                </div>
+                <div class="concept-item">
+                  <strong>UX — User Experience</strong> Seluruh
+                  <em>pengalaman</em> pengguna saat berinteraksi dengan produk:
+                  kemudahan navigasi, kecepatan menemukan informasi, kepuasan.
+                  UX menjawab "Seberapa mudah digunakan?"
+                </div>
+              </div>
+              <div class="highlight-box">
+                💡 <strong>Analogi Sederhana:</strong> Jika website adalah
+                sebuah toko, maka <strong>UX</strong> adalah denah toko yang
+                logis (pintu masuk mudah ditemukan, kasir tidak tersembunyi),
+                sedangkan <strong>UI</strong> adalah dekorasi toko yang menarik
+                (warna cat dinding, desain rak, pencahayaan). Keduanya harus
+                bekerja bersama.
+              </div>
+              <h4>
+                <i
+                  data-lucide="map"
+                  style="width: 16px; height: 16px; color: var(--accent)"
+                ></i>
+                Proses Desain UI/UX (Design Thinking)
+              </h4>
+              <div class="concept-grid">
+                <div class="concept-item">
+                  <strong>1. Empathize 🔍</strong> Pahami pengguna — siapa
+                  target pengunjung website UMKM? Apa kebutuhan & masalah
+                  mereka?
+                </div>
+                <div class="concept-item">
+                  <strong>2. Define 🎯</strong> Rumuskan masalah utama:
+                  "Pengunjung kesulitan menemukan nomor kontak" → perlu halaman
+                  kontak yang menonjol
+                </div>
+                <div class="concept-item">
+                  <strong>3. Ideate 💡</strong> Brainstorm solusi desain, buat
+                  sketsa kasar, pertimbangkan berbagai alternatif layout dan
+                  navigasi
+                </div>
+                <div class="concept-item">
+                  <strong>4. Prototype 🖼️</strong> Wujudkan ide ke dalam desain
+                  visual menggunakan Figma — dari wireframe ke mockup
+                </div>
+                <div class="concept-item">
+                  <strong>5. Test ✅</strong> Uji prototipe dengan pengguna
+                  nyata, kumpulkan feedback, dan perbaiki desain
+                </div>
+                <div class="concept-item">
+                  <strong>6. Iterate 🔄</strong> Desain yang baik tidak lahir
+                  sekali jadi — terus perbaiki berdasarkan masukan
+                </div>
+              </div>
+              <h4>
+                <i
+                  data-lucide="grid"
+                  style="width: 16px; height: 16px; color: var(--accent)"
+                ></i>
+                Prinsip Desain UI/UX Penting
+              </h4>
+              <div class="concept-grid">
+                <div class="concept-item">
+                  <strong>Visual Hierarchy</strong> Elemen paling penting harus
+                  paling menonjol melalui ukuran, warna, dan posisi. Judul >
+                  Subjudul > Body text
+                </div>
+                <div class="concept-item">
+                  <strong>Consistency</strong> Gunakan warna, font, ukuran
+                  tombol, dan ikon yang seragam di seluruh halaman agar terasa
+                  profesional
+                </div>
+                <div class="concept-item">
+                  <strong>Whitespace</strong> Ruang kosong bukan pemborosan —
+                  justru membuat desain lebih bersih, elegan, dan mudah dibaca
+                </div>
+                <div class="concept-item">
+                  <strong>Contrast &amp; Readability</strong> Pastikan teks
+                  mudah dibaca: teks gelap pada latar terang, atau sebaliknya.
+                  Minimal rasio kontras 4.5:1
+                </div>
+                <div class="concept-item">
+                  <strong>F-Pattern Reading</strong> Mata manusia membaca layar
+                  membentuk huruf F — letakkan informasi paling penting di baris
+                  pertama dan sisi kiri
+                </div>
+                <div class="concept-item">
+                  <strong>Mobile-First Design</strong> Mayoritas pengunjung
+                  menggunakan HP — rancang untuk layar kecil dulu, baru
+                  diperluas ke desktop
+                </div>
+                <div class="concept-item">
+                  <strong>Proximity &amp; Grouping</strong> Elemen yang
+                  berkaitan diletakkan berdekatan agar mudah dipahami sebagai
+                  satu kesatuan informasi
+                </div>
+                <div class="concept-item">
+                  <strong>CTA yang Jelas</strong> Tombol Call-to-Action (Hubungi
+                  Kami, Lihat Produk) harus menonjol, jelas teksnya, dan mudah
+                  ditemukan
+                </div>
+              </div>
+              <h4>
+                <i
+                  data-lucide="droplets"
+                  style="width: 16px; height: 16px; color: var(--accent)"
+                ></i>
+                Teori Warna dalam Desain Website
+              </h4>
+              <p>
+                Warna bukan sekadar dekorasi — warna berkomunikasi dan membangun
+                emosi pengguna terhadap brand UMKM.
+              </p>
+              <div class="concept-grid">
+                <div class="concept-item">
+                  <strong>🔵 Biru</strong> Kepercayaan, profesional, keamanan.
+                  Cocok untuk jasa, teknologi, dan keuangan
+                </div>
+                <div class="concept-item">
+                  <strong>🟠 Oranye / Merah</strong> Energi, semangat, nafsu
+                  makan. Ideal untuk kuliner, promosi, dan FMCG
+                </div>
+                <div class="concept-item">
+                  <strong>🟢 Hijau</strong> Alam, segar, sehat, ramah
+                  lingkungan. Cocok untuk produk organik dan kesehatan
+                </div>
+                <div class="concept-item">
+                  <strong>⚫ Hitam / Abu Gelap</strong> Mewah, elegan,
+                  eksklusif. Digunakan brand premium dan fashion
+                </div>
+              </div>
+              <h4>
+                <i
+                  data-lucide="help-circle"
+                  style="width: 16px; height: 16px; color: var(--accent)"
+                ></i>
+                FAQ &amp; Ringkasan
+              </h4>
+              <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                  Apa itu wireframe dan mockup? Apa bedanya?
+                  <i
+                    data-lucide="chevron-down"
+                    style="width: 16px; height: 16px"
+                  ></i>
+                </div>
+                <div class="accordion-body">
+                  <strong>Wireframe</strong> adalah sketsa hitam-putih berisi
+                  kerangka tata letak tanpa detail visual — seperti denah
+                  bangunan. <strong>Mockup</strong> adalah versi lebih detail
+                  dengan warna, font, dan gambar nyata — seperti render 3D
+                  bangunan. Wireframe dibuat dulu untuk menyepakati struktur,
+                  baru mockup untuk menyepakati tampilan.
+                </div>
+              </div>
+              <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                  Bagaimana cara memilih font yang tepat untuk web UMKM?
+                  <i
+                    data-lucide="chevron-down"
+                    style="width: 16px; height: 16px"
+                  ></i>
+                </div>
+                <div class="accordion-body">
+                  Gunakan maksimal <strong>2 jenis font</strong>: satu untuk
+                  judul (display font yang berkarakter) dan satu untuk isi teks
+                  (body font yang mudah dibaca). Hindari font yang terlalu
+                  dekoratif untuk paragraf panjang. Rekomendasi gratis dari
+                  Google Fonts:
+                  <strong>Poppins, Plus Jakarta Sans, Nunito</strong> untuk body
+                  — dan <strong>Syne, Playfair Display</strong> untuk judul.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MATERI 3: FIGMA -->
+        <div class="materi-content" id="materi-js">
+          <div class="materi-card">
+            <div class="materi-card-header">
+              <div>
+                <i data-lucide="pen-tool" style="width: 24px; height: 24px"></i>
+              </div>
+              <div>
+                <h3>Figma — Dari Dasar Hingga Prototipe Interaktif</h3>
+                <p>
+                  Tool Desain UI/UX · Wireframe · Mockup · Clickable Prototype
+                </p>
+              </div>
+            </div>
+            <div class="materi-card-body">
+              <h4>
+                <i
+                  data-lucide="info"
+                  style="width: 16px; height: 16px; color: var(--accent)"
+                ></i>
+                Apa itu Figma?
+              </h4>
+              <p>
+                Figma adalah aplikasi desain UI/UX berbasis
+                <strong>cloud (browser)</strong> yang paling banyak digunakan
+                oleh desainer profesional di seluruh dunia. Figma memungkinkan
+                kamu membuat wireframe, mockup, hingga prototipe interaktif yang
+                dapat diklik — tanpa perlu install software, cukup buka browser.
+              </p>
+              <div class="highlight-box">
+                🎉 <strong>Gratis untuk Pelajar!</strong> Figma memiliki paket
+                gratis (Starter) yang sudah sangat lengkap untuk keperluan
+                belajar dan proyek sekolah. Daftar di figma.com menggunakan akun
+                Google atau email sekolah.
+              </div>
+              <h4>
+                <i
+                  data-lucide="monitor"
+                  style="width: 16px; height: 16px; color: var(--accent)"
+                ></i>
+                Mengenal Antarmuka Figma
+              </h4>
+              <div class="concept-grid">
+                <div class="concept-item">
+                  <strong>🗂️ Layers Panel (Kiri)</strong> Menampilkan semua
+                  elemen desain dalam struktur hierarki seperti folder. Klik
+                  elemen di sini untuk memilih atau mengatur urutannya
+                </div>
+                <div class="concept-item">
+                  <strong>🎨 Properties Panel (Kanan)</strong> Mengatur properti
+                  elemen yang dipilih: ukuran, warna, font, border, bayangan,
+                  dan efek lainnya
+                </div>
+                <div class="concept-item">
+                  <strong>🖼️ Canvas (Tengah)</strong> Area kerja utama tempat
+                  kamu mendesain. Gunakan scroll untuk zoom in/out, dan drag
+                  untuk berpindah area
+                </div>
+                <div class="concept-item">
+                  <strong>🔧 Toolbar (Atas)</strong> Berisi tool utama: Select
+                  (V), Frame (F), Shape (R/O), Text (T), Pen (P), dan Hand (H)
+                  untuk navigasi
+                </div>
+                <div class="concept-item">
+                  <strong>📑 Pages Panel</strong> Satu file Figma bisa memiliki
+                  banyak halaman — gunakan untuk memisahkan Wireframe, Mockup,
+                  dan Prototype
+                </div>
+                <div class="concept-item">
+                  <strong>🔗 Assets Panel</strong> Menyimpan komponen, ikon, dan
+                  warna yang sudah dibuat agar bisa digunakan ulang (reusable)
+                </div>
+              </div>
+              <h4>
+                <i
+                  data-lucide="move"
+                  style="width: 16px; height: 16px; color: var(--accent)"
+                ></i>
+                Shortcut Penting Figma
+              </h4>
+              <div class="concept-grid">
+                <div class="concept-item">
+                  <strong>V</strong> — Select Tool (pilih elemen)
+                </div>
+                <div class="concept-item">
+                  <strong>F</strong> — Frame Tool (buat kanvas halaman)
+                </div>
+                <div class="concept-item">
+                  <strong>R</strong> — Rectangle (kotak/persegi)
+                </div>
+                <div class="concept-item">
+                  <strong>T</strong> — Text Tool (tambah teks)
+                </div>
+                <div class="concept-item">
+                  <strong>Ctrl + G</strong> — Group elemen terpilih
+                </div>
+                <div class="concept-item">
+                  <strong>Ctrl + D</strong> — Duplicate elemen
+                </div>
+                <div class="concept-item">
+                  <strong>Ctrl + Z</strong> — Undo (batalkan aksi)
+                </div>
+                <div class="concept-item">
+                  <strong>Ctrl + Shift + H</strong> — Align horizontal center
+                </div>
+              </div>
+              <h4>
+                <i
+                  data-lucide="git-branch"
+                  style="width: 16px; height: 16px; color: var(--accent)"
+                ></i>
+                Alur Pengembangan Desain di Figma
+              </h4>
+              <div class="concept-grid">
+                <div class="concept-item">
+                  <strong>Tahap 1 — Setup</strong> Buat File baru → buat Frame
+                  dengan ukuran Desktop (1440×900) atau Mobile (375×812) → atur
+                  grid layout
+                </div>
+                <div class="concept-item">
+                  <strong>Tahap 2 — Wireframe</strong> Buat sketsa tata letak
+                  menggunakan kotak abu-abu dan placeholder teks. Tentukan
+                  posisi navbar, hero, konten, footer
+                </div>
+                <div class="concept-item">
+                  <strong>Tahap 3 — Style Guide</strong> Definisikan Color
+                  Palette, Typography Scale, dan komponen dasar (Button, Card,
+                  Input) sebagai design tokens
+                </div>
+                <div class="concept-item">
+                  <strong>Tahap 4 — Mockup</strong> Isi wireframe dengan warna,
+                  font asli, gambar, dan ikon. Desain setiap komponen dengan
+                  detail visual penuh
+                </div>
+                <div class="concept-item">
+                  <strong>Tahap 5 — Komponen</strong> Ubah elemen yang digunakan
+                  berulang (tombol, navbar, card) menjadi Component agar mudah
+                  diubah serentak
+                </div>
+                <div class="concept-item">
+                  <strong>Tahap 6 — Prototype</strong> Hubungkan antar frame
+                  dengan koneksi interaksi (klik tombol → pindah halaman) untuk
+                  membuat simulasi website nyata
+                </div>
+              </div>
+              <h4>
+                <i
+                  data-lucide="play"
+                  style="width: 16px; height: 16px; color: var(--accent)"
+                ></i>
+                Membuat Clickable Prototype di Figma
+              </h4>
+              <p>
+                Prototipe interaktif memungkinkan desain kamu "diklik" seperti
+                website sungguhan, tanpa perlu coding sama sekali. Caranya:
+              </p>
+              <div class="concept-grid">
+                <div class="concept-item">
+                  <strong>Langkah 1</strong> Pastikan kamu sudah punya minimal 2
+                  frame (misal: Halaman Beranda dan Halaman Produk)
+                </div>
+                <div class="concept-item">
+                  <strong>Langkah 2</strong> Klik tab
+                  <strong>"Prototype"</strong> di panel kanan (sebelumnya di
+                  "Design")
+                </div>
+                <div class="concept-item">
+                  <strong>Langkah 3</strong> Pilih elemen tombol/link → akan
+                  muncul titik biru di sisi kanan elemen
+                </div>
+                <div class="concept-item">
+                  <strong>Langkah 4</strong> Drag titik biru ke frame tujuan →
+                  atur interaksi: On Click → Navigate To → frame tujuan
+                </div>
+                <div class="concept-item">
+                  <strong>Langkah 5</strong> Pilih animasi transisi: Instant,
+                  Dissolve, Push, atau Slide untuk perpindahan halaman yang
+                  halus
+                </div>
+                <div class="concept-item">
+                  <strong>Langkah 6</strong> Klik tombol ▶ Preview di pojok
+                  kanan atas untuk mencoba prototipe. Share link ke klien UMKM
+                  untuk feedback!
+                </div>
+              </div>
+              <h4>
+                <i
+                  data-lucide="help-circle"
+                  style="width: 16px; height: 16px; color: var(--accent)"
+                ></i>
+                FAQ &amp; Ringkasan
+              </h4>
+              <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                  Apa itu Component dan Auto Layout di Figma?
+                  <i
+                    data-lucide="chevron-down"
+                    style="width: 16px; height: 16px"
+                  ></i>
+                </div>
+                <div class="accordion-body">
+                  <strong>Component</strong> adalah elemen desain yang bisa
+                  digunakan berulang kali — ubah satu "master component" maka
+                  semua instance-nya otomatis ikut berubah. Sangat hemat waktu
+                  untuk tombol, navbar, dan card.
+                  <strong>Auto Layout</strong> adalah fitur yang membuat frame
+                  menyesuaikan ukuran secara otomatis saat kontennya berubah —
+                  seperti Flexbox di CSS. Kedua fitur ini wajib dikuasai untuk
+                  desain yang efisien dan scalable.
+                </div>
+              </div>
+              <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                  Bagaimana cara berbagi desain Figma ke orang lain?
+                  <i
+                    data-lucide="chevron-down"
+                    style="width: 16px; height: 16px"
+                  ></i>
+                </div>
+                <div class="accordion-body">
+                  Klik tombol <strong>Share</strong> di pojok kanan atas → atur
+                  permission menjadi "Anyone with the link can view" → salin
+                  link dan bagikan. Untuk berbagi link prototype yang bisa
+                  diklik, masuk ke mode Prototype lalu klik tombol
+                  <strong>Share Prototype</strong> → salin link khusus prototipe
+                  yang bisa dibuka siapa saja di browser.
+                </div>
+              </div>
+              <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                  Plugin Figma apa yang berguna untuk desain website UMKM?
+                  <i
+                    data-lucide="chevron-down"
+                    style="width: 16px; height: 16px"
+                  ></i>
+                </div>
+                <div class="accordion-body">
+                  Plugin rekomendasi: <strong>Unsplash</strong> — sisipkan foto
+                  berkualitas tinggi gratis langsung dari Figma;
+                  <strong>Iconify</strong> — akses ribuan ikon dari berbagai
+                  library; <strong>Lorem Ipsum</strong> — isi otomatis
+                  placeholder teks; <strong>Contrast</strong> — cek rasio
+                  kontras warna untuk aksesibilitas;
+                  <strong>LottieFiles</strong> — tambahkan animasi ke desain.
+                  Semua bisa diinstal gratis dari menu Plugins di Figma.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ PAGE: JADWAL ═══════════ -->
+    <div class="page" id="page-jadwal">
+      <div class="section-wrap">
+        <div class="section-header">
+          <div class="section-icon">
+            <i data-lucide="calendar" style="width: 22px; height: 22px"></i>
+          </div>
+          <div>
+            <h2>Jadwal Pembelajaran</h2>
+            <p>8 pertemuan terstruktur menuju proyek akhir</p>
+          </div>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-item">
+            <div class="timeline-num">1</div>
+            <div class="timeline-info">
+              <h4>Pengantar Web Development & Studi Kasus</h4>
+              <p>
+                Orientasi proyek, pengenalan HTML5, struktur halaman web, dan
+                analisis studi kasus nyata yang akan menjadi dasar proyek
+              </p>
+              <div class="meta">
+                <span class="status-badge status-teori">Teori</span>
+                <span class="tag tag-blue">HTML Dasar</span>
+                <span class="tag tag-teal">Analisis Masalah</span>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-num">2</div>
+            <div class="timeline-info">
+              <h4>HTML5 Semantik & Struktur Konten</h4>
+              <p>
+                Elemen semantik HTML5, formulir, tabel, dan membangun wireframe
+                halaman web untuk proyek
+              </p>
+              <div class="meta">
+                <span class="status-badge status-praktik">Praktik</span>
+                <span class="tag tag-blue">HTML Semantik</span>
+                <span class="tag tag-blue">Form & Table</span>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-num">3</div>
+            <div class="timeline-info">
+              <h4>CSS3 — Styling & Desain Visual</h4>
+              <p>
+                Box model, Flexbox, CSS Grid, variabel CSS, dan menerapkan
+                desain UI/UX yang menarik pada proyek
+              </p>
+              <div class="meta">
+                <span class="status-badge status-praktik">Praktik</span>
+                <span class="tag tag-blue">Flexbox</span>
+                <span class="tag tag-blue">CSS Grid</span>
+                <span class="tag tag-teal">UI Design</span>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-num">4</div>
+            <div class="timeline-info">
+              <h4>Responsive Design & Mobile-First</h4>
+              <p>
+                Media queries, pendekatan mobile-first, breakpoints, dan
+                memastikan proyek tampil baik di semua perangkat
+              </p>
+              <div class="meta">
+                <span class="status-badge status-praktik">Praktik</span>
+                <span class="tag tag-blue">Media Query</span>
+                <span class="tag tag-teal">Responsive</span>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-num">5</div>
+            <div class="timeline-info">
+              <h4>JavaScript — Interaktivitas & DOM</h4>
+              <p>
+                Variabel, fungsi, event listener, manipulasi DOM, dan
+                menambahkan interaktivitas pada halaman web proyek
+              </p>
+              <div class="meta">
+                <span class="status-badge status-praktik">Praktik</span>
+                <span class="tag tag-blue">JavaScript</span>
+                <span class="tag tag-blue">DOM API</span>
+                <span class="tag tag-teal">Event Handling</span>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-num">6</div>
+            <div class="timeline-info">
+              <h4>Fetch API & Data Dinamis</h4>
+              <p>
+                Mengambil dan menampilkan data dari API eksternal, JSON parsing,
+                dan integrasi data pada aplikasi proyek
+              </p>
+              <div class="meta">
+                <span class="status-badge status-praktik">Praktik</span>
+                <span class="tag tag-blue">Fetch API</span>
+                <span class="tag tag-blue">JSON</span>
+                <span class="tag tag-orange">Async/Await</span>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-num">7</div>
+            <div class="timeline-info">
+              <h4>GitHub & Deployment ke Netlify</h4>
+              <p>
+                Version control dengan Git, membuat repositori GitHub, dan
+                mempublikasikan proyek secara online
+              </p>
+              <div class="meta">
+                <span class="status-badge status-proyek">Proyek</span>
+                <span class="tag tag-teal">GitHub</span>
+                <span class="tag tag-teal">Netlify</span>
+                <span class="tag tag-orange">Deploy</span>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-num">8</div>
+            <div class="timeline-info">
+              <h4>Presentasi & Demo Proyek Akhir</h4>
+              <p>
+                Setiap kelompok mempresentasikan proyek web mereka, demo live
+                aplikasi, sesi tanya jawab, dan refleksi pembelajaran
+              </p>
+              <div class="meta">
+                <span class="status-badge status-presentasi">Presentasi</span>
+                <span class="tag tag-orange">Demo Live</span>
+                <span class="tag tag-blue">Refleksi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ PAGE: TUTORIAL ═══════════ -->
+    <div class="page" id="page-tutorial">
+      <div class="section-wrap">
+        <div class="section-header">
+          <div class="section-icon">
+            <i data-lucide="play-circle" style="width: 22px; height: 22px"></i>
+          </div>
+          <div>
+            <h2>Tutorial & Referensi</h2>
+            <p>Video, blog, dan dokumen pendukung pembelajaran</p>
+          </div>
+        </div>
+
+        <div class="tutorial-tabs">
+          <button
+            class="tutorial-tab-btn active"
+            onclick="showTutorial(event, 'video')"
+          >
+            <i data-lucide="youtube" style="width: 15px; height: 15px"></i>
+            Video Tutorial
+          </button>
+          <button
+            class="tutorial-tab-btn"
+            onclick="showTutorial(event, 'resource')"
+          >
+            <i data-lucide="link" style="width: 15px; height: 15px"></i> Artikel
+            & PDF
+          </button>
+        </div>
+
+        <div class="tutorial-section active" id="tutorial-video">
+          <div class="video-grid">
+            <div class="video-card">
+              <div class="video-thumb" onclick="openYT('qz0aGYrrlhU')">
+                <img
+                  src="https://img.youtube.com/vi/qz0aGYrrlhU/hqdefault.jpg"
+                  alt="HTML Full Course"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/480x270/0F4C81/white?text=HTML+Tutorial'
+                  "
+                />
+                <div class="video-play">
+                  <div class="play-btn">
+                    <i
+                      data-lucide="play"
+                      style="width: 20px; height: 20px; margin-left: 3px"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+              <div class="video-info">
+                <h4>HTML Tutorial for Beginners — Lengkap</h4>
+                <p>
+                  Pelajari HTML dari awal hingga mahir dalam satu video
+                  komprehensif
+                </p>
+                <div class="video-meta">
+                  <span class="video-channel"
+                    ><i data-lucide="tv" style="width: 12px; height: 12px"></i>
+                    Programmer Zaman Now</span
+                  >
+                  <a
+                    href="https://www.youtube.com/watch?v=qz0aGYrrlhU"
+                    target="_blank"
+                    class="watch-btn"
+                  >
+                    <i
+                      data-lucide="external-link"
+                      style="width: 12px; height: 12px"
+                    ></i>
+                    Tonton
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="video-card">
+              <div class="video-thumb" onclick="openYT('Dn5B6NNRQFA')">
+                <img
+                  src="https://img.youtube.com/vi/Dn5B6NNRQFA/hqdefault.jpg"
+                  alt="CSS Tutorial"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/480x270/0F4C81/white?text=CSS+Tutorial'
+                  "
+                />
+                <div class="video-play">
+                  <div class="play-btn">
+                    <i
+                      data-lucide="play"
+                      style="width: 20px; height: 20px; margin-left: 3px"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+              <div class="video-info">
+                <h4>CSS3 Tutorial — Flexbox & Grid Layout</h4>
+                <p>
+                  Kuasai Flexbox dan CSS Grid untuk membuat layout responsif
+                  modern
+                </p>
+                <div class="video-meta">
+                  <span class="video-channel"
+                    ><i data-lucide="tv" style="width: 12px; height: 12px"></i>
+                    Web Programming Unpas</span
+                  >
+                  <a
+                    href="https://www.youtube.com/watch?v=Dn5B6NNRQFA"
+                    target="_blank"
+                    class="watch-btn"
+                  >
+                    <i
+                      data-lucide="external-link"
+                      style="width: 12px; height: 12px"
+                    ></i>
+                    Tonton
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="video-card">
+              <div class="video-thumb" onclick="openYT('Ke90Tje7VS0')">
+                <img
+                  src="https://img.youtube.com/vi/Ke90Tje7VS0/hqdefault.jpg"
+                  alt="JS Tutorial"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/480x270/0F4C81/white?text=JS+Tutorial'
+                  "
+                />
+                <div class="video-play">
+                  <div class="play-btn">
+                    <i
+                      data-lucide="play"
+                      style="width: 20px; height: 20px; margin-left: 3px"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+              <div class="video-info">
+                <h4>JavaScript Tutorial untuk Pemula</h4>
+                <p>
+                  Dasar-dasar JavaScript: variabel, fungsi, DOM manipulation,
+                  dan event
+                </p>
+                <div class="video-meta">
+                  <span class="video-channel"
+                    ><i data-lucide="tv" style="width: 12px; height: 12px"></i>
+                    Sandhika Galih</span
+                  >
+                  <a
+                    href="https://www.youtube.com/watch?v=Ke90Tje7VS0"
+                    target="_blank"
+                    class="watch-btn"
+                  >
+                    <i
+                      data-lucide="external-link"
+                      style="width: 12px; height: 12px"
+                    ></i>
+                    Tonton
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="video-card">
+              <div class="video-thumb" onclick="openYT('mU6anWqZJcc')">
+                <img
+                  src="https://img.youtube.com/vi/mU6anWqZJcc/hqdefault.jpg"
+                  alt="Git GitHub"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/480x270/0F4C81/white?text=Git+Tutorial'
+                  "
+                />
+                <div class="video-play">
+                  <div class="play-btn">
+                    <i
+                      data-lucide="play"
+                      style="width: 20px; height: 20px; margin-left: 3px"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+              <div class="video-info">
+                <h4>Belajar Git & GitHub — Dari Nol</h4>
+                <p>
+                  Pelajari cara menggunakan Git dan GitHub untuk version control
+                  proyek web
+                </p>
+                <div class="video-meta">
+                  <span class="video-channel"
+                    ><i data-lucide="tv" style="width: 12px; height: 12px"></i>
+                    Programmer Zaman Now</span
+                  >
+                  <a
+                    href="https://www.youtube.com/watch?v=mU6anWqZJcc"
+                    target="_blank"
+                    class="watch-btn"
+                  >
+                    <i
+                      data-lucide="external-link"
+                      style="width: 12px; height: 12px"
+                    ></i>
+                    Tonton
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="video-card">
+              <div class="video-thumb" onclick="openYT('X1kvBpBmkCI')">
+                <img
+                  src="https://img.youtube.com/vi/X1kvBpBmkCI/hqdefault.jpg"
+                  alt="Netlify Deploy"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/480x270/0F4C81/white?text=Deploy+Tutorial'
+                  "
+                />
+                <div class="video-play">
+                  <div class="play-btn">
+                    <i
+                      data-lucide="play"
+                      style="width: 20px; height: 20px; margin-left: 3px"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+              <div class="video-info">
+                <h4>Cara Deploy Website ke Netlify Gratis</h4>
+                <p>
+                  Langkah mudah mempublikasikan website ke internet secara
+                  gratis menggunakan Netlify
+                </p>
+                <div class="video-meta">
+                  <span class="video-channel"
+                    ><i data-lucide="tv" style="width: 12px; height: 12px"></i>
+                    CodePolitan</span
+                  >
+                  <a
+                    href="https://www.youtube.com/watch?v=X1kvBpBmkCI"
+                    target="_blank"
+                    class="watch-btn"
+                  >
+                    <i
+                      data-lucide="external-link"
+                      style="width: 12px; height: 12px"
+                    ></i>
+                    Tonton
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="video-card">
+              <div class="video-thumb" onclick="openYT('8KaJRw-rfn8')">
+                <img
+                  src="https://img.youtube.com/vi/8KaJRw-rfn8/hqdefault.jpg"
+                  alt="Figma Tutorial"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/480x270/0F4C81/white?text=Figma+Tutorial'
+                  "
+                />
+                <div class="video-play">
+                  <div class="play-btn">
+                    <i
+                      data-lucide="play"
+                      style="width: 20px; height: 20px; margin-left: 3px"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+              <div class="video-info">
+                <h4>Belajar Figma untuk UI/UX Pemula</h4>
+                <p>
+                  Buat wireframe dan prototype desain UI web menggunakan Figma
+                  secara gratis
+                </p>
+                <div class="video-meta">
+                  <span class="video-channel"
+                    ><i data-lucide="tv" style="width: 12px; height: 12px"></i>
+                    Angga Creative</span
+                  >
+                  <a
+                    href="https://www.youtube.com/watch?v=8KaJRw-rfn8"
+                    target="_blank"
+                    class="watch-btn"
+                  >
+                    <i
+                      data-lucide="external-link"
+                      style="width: 12px; height: 12px"
+                    ></i>
+                    Tonton
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tutorial-section" id="tutorial-resource">
+          <div class="resource-grid">
+            <div class="resource-card">
+              <div class="resource-icon ri-link">
+                <i
+                  data-lucide="external-link"
+                  style="width: 18px; height: 18px"
+                ></i>
+              </div>
+              <div class="resource-info">
+                <h4>MDN Web Docs — HTML Reference</h4>
+                <p>
+                  Dokumentasi resmi dan terlengkap untuk HTML, CSS, dan
+                  JavaScript oleh Mozilla
+                </p>
+                <a
+                  href="https://developer.mozilla.org/id/docs/Web/HTML"
+                  target="_blank"
+                  class="resource-link"
+                >
+                  <i
+                    data-lucide="arrow-right"
+                    style="width: 12px; height: 12px"
+                  ></i>
+                  Buka Referensi
+                </a>
+              </div>
+            </div>
+            <div class="resource-card">
+              <div class="resource-icon ri-link">
+                <i
+                  data-lucide="external-link"
+                  style="width: 18px; height: 18px"
+                ></i>
+              </div>
+              <div class="resource-info">
+                <h4>W3Schools — Tutorial Interaktif</h4>
+                <p>
+                  Tutorial HTML/CSS/JS interaktif dengan editor online langsung
+                  di browser
+                </p>
+                <a
+                  href="https://www.w3schools.com"
+                  target="_blank"
+                  class="resource-link"
+                >
+                  <i
+                    data-lucide="arrow-right"
+                    style="width: 12px; height: 12px"
+                  ></i>
+                  Buka Tutorial
+                </a>
+              </div>
+            </div>
+            <div class="resource-card">
+              <div class="resource-icon ri-blog">
+                <i
+                  data-lucide="book-open"
+                  style="width: 18px; height: 18px"
+                ></i>
+              </div>
+              <div class="resource-info">
+                <h4>CSS Tricks — Panduan Flexbox</h4>
+                <p>
+                  Panduan visual lengkap tentang CSS Flexbox, salah satu
+                  referensi terbaik di internet
+                </p>
+                <a
+                  href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
+                  target="_blank"
+                  class="resource-link"
+                >
+                  <i
+                    data-lucide="arrow-right"
+                    style="width: 12px; height: 12px"
+                  ></i>
+                  Baca Artikel
+                </a>
+              </div>
+            </div>
+            <div class="resource-card">
+              <div class="resource-icon ri-pdf">
+                <i
+                  data-lucide="file-text"
+                  style="width: 18px; height: 18px"
+                ></i>
+              </div>
+              <div class="resource-info">
+                <h4>Modul HTML5 Dasar — Kemdikbud</h4>
+                <p>
+                  Modul pembelajaran HTML5 resmi dari Kemdikbud untuk SMK/MAK
+                  Program Keahlian RPL
+                </p>
+                <a
+                  href="https://repositori.kemdikbud.go.id"
+                  target="_blank"
+                  class="resource-link"
+                >
+                  <i
+                    data-lucide="arrow-right"
+                    style="width: 12px; height: 12px"
+                  ></i>
+                  Unduh PDF
+                </a>
+              </div>
+            </div>
+            <div class="resource-card">
+              <div class="resource-icon ri-link">
+                <i
+                  data-lucide="external-link"
+                  style="width: 18px; height: 18px"
+                ></i>
+              </div>
+              <div class="resource-info">
+                <h4>freeCodeCamp — Kursus Gratis</h4>
+                <p>
+                  Platform belajar coding gratis dengan kurikulum terstruktur
+                  dan sertifikat resmi
+                </p>
+                <a
+                  href="https://www.freecodecamp.org"
+                  target="_blank"
+                  class="resource-link"
+                >
+                  <i
+                    data-lucide="arrow-right"
+                    style="width: 12px; height: 12px"
+                  ></i>
+                  Mulai Belajar
+                </a>
+              </div>
+            </div>
+            <div class="resource-card">
+              <div class="resource-icon ri-blog">
+                <i
+                  data-lucide="book-open"
+                  style="width: 18px; height: 18px"
+                ></i>
+              </div>
+              <div class="resource-info">
+                <h4>Petani Kode — Blog Web Dev Indonesia</h4>
+                <p>
+                  Blog tutorial pemrograman web dalam bahasa Indonesia yang
+                  mudah dipahami
+                </p>
+                <a
+                  href="https://www.petanikode.com"
+                  target="_blank"
+                  class="resource-link"
+                >
+                  <i
+                    data-lucide="arrow-right"
+                    style="width: 12px; height: 12px"
+                  ></i>
+                  Baca Blog
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ PAGE: PROYEK ═══════════ -->
+    <div class="page" id="page-proyek">
+      <div class="section-wrap">
+        <div class="section-header">
+          <div class="section-icon">
+            <i data-lucide="briefcase" style="width: 22px; height: 22px"></i>
+          </div>
+          <div>
+            <h2>Deskripsi Proyek</h2>
+            <p>
+              Panduan lengkap pengerjaan proyek PJBL berbasis studi kasus nyata
+            </p>
+          </div>
+        </div>
+
+        <div class="proyek-hero">
+          <div class="case-badge">
+            <i data-lucide="alert-circle" style="width: 12px; height: 12px"></i>
+            Studi Kasus Nyata
+          </div>
+          <h2>Membangun Aplikasi Web Sistem Informasi UMKM Lokal</h2>
+          <p>
+            Banyak UMKM di Krian, Sidoarjo belum memiliki kehadiran digital.
+            Produk mereka hanya dijual secara offline dan sulit ditemukan oleh
+            konsumen yang lebih luas. Proyek ini menantang kalian untuk membuat
+            solusi nyata bagi masalah ini.
+          </p>
+        </div>
+
+        <div class="studi-kasus-card">
+          <div class="studi-header">
+            <div class="studi-icon">
+              <i data-lucide="map-pin" style="width: 20px; height: 20px"></i>
+            </div>
+            <div>
+              <h3>Latar Belakang Studi Kasus</h3>
+              <p>Permasalahan nyata di lingkungan sekitar SMK Yapalis Krian</p>
+            </div>
+          </div>
+          <div class="studi-body">
+            <p>
+              Berdasarkan data dari Dinas Koperasi dan UKM Kabupaten Sidoarjo,
+              <strong
+                >terdapat lebih dari 2.000 UMKM aktif di Kecamatan Krian</strong
+              >. Namun, hanya sekitar 15% yang memiliki kehadiran online.
+              Sebagian besar masih bergantung pada penjualan langsung atau dari
+              mulut ke mulut.
+            </p>
+            <p>
+              Akibatnya,
+              <strong>potensi pasar yang lebih luas tidak terjangkau</strong>,
+              konsumen kesulitan menemukan produk lokal berkualitas, dan
+              pendapatan UMKM terbatas. Di sinilah peran kalian sebagai calon
+              pengembang teknologi menjadi sangat penting.
+            </p>
+            <p>
+              Tugas kalian adalah membangun
+              <strong>website profil UMKM</strong> atau
+              <strong>katalog produk digital</strong> untuk salah satu UMKM
+              nyata di sekitar Krian. Wawancarai pemilik UMKM, pahami kebutuhan
+              mereka, dan buat solusi web yang benar-benar dapat mereka gunakan.
+            </p>
+            <div class="deliverable-grid">
+              <div class="deliverable-item">
+                <strong>🏪 Target Klien</strong>UMKM di Kecamatan Krian
+                (kuliner, kerajinan, atau jasa)
+              </div>
+              <div class="deliverable-item">
+                <strong>🌐 Output Utama</strong>Website profil/katalog yang
+                dapat diakses online
+              </div>
+              <div class="deliverable-item">
+                <strong>👥 Cara Kerja</strong>Kelompok 3-4 orang dengan
+                pembagian tugas jelas
+              </div>
+              <div class="deliverable-item">
+                <strong>⏱️ Durasi</strong>8 pertemuan (±6 minggu pengerjaan)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3
+          style="
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 16px;
+          "
+        >
+          <i
+            data-lucide="list-ordered"
+            style="width: 18px; height: 18px; vertical-align: -3px"
+          ></i>
+          Langkah-Langkah Pengerjaan
+        </h3>
+        <div class="steps-container">
+          <div class="step-card">
+            <div class="step-content">
+              <h4>Identifikasi Masalah & Pemilihan UMKM</h4>
+              <p>
+                Lakukan survei lapangan di sekitar Krian. Temukan UMKM yang
+                belum memiliki website. Wawancara pemilik untuk memahami
+                kebutuhan, produk, dan target pelanggan mereka.
+              </p>
+              <div class="step-meta">
+                <span class="tag tag-orange">Pertemuan 1</span>
+                <span class="tag tag-blue">Wawancara</span>
+                <span class="tag tag-blue">Analisis Kebutuhan</span>
+              </div>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-content">
+              <h4>Perencanaan & Desain UI/UX (Wireframe)</h4>
+              <p>
+                Buat wireframe menggunakan Figma atau kertas. Tentukan struktur
+                halaman, navigasi, warna, dan font. Presentasikan mockup kepada
+                pemilik UMKM untuk validasi.
+              </p>
+              <div class="step-meta">
+                <span class="tag tag-orange">Pertemuan 2-3</span>
+                <span class="tag tag-blue">Figma</span>
+                <span class="tag tag-blue">Wireframe</span>
+              </div>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-content">
+              <h4>Pengembangan Front-End (HTML & CSS)</h4>
+              <p>
+                Implementasikan desain ke kode HTML dan CSS. Pastikan struktur
+                semantik, tampilan menarik, dan responsif di mobile. Gunakan VS
+                Code sebagai editor.
+              </p>
+              <div class="step-meta">
+                <span class="tag tag-orange">Pertemuan 3-5</span>
+                <span class="tag tag-blue">HTML5</span>
+                <span class="tag tag-blue">CSS3</span>
+                <span class="tag tag-teal">Responsive</span>
+              </div>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-content">
+              <h4>Penambahan Interaktivitas dengan JavaScript</h4>
+              <p>
+                Tambahkan fitur interaktif: galeri produk, menu navigasi mobile,
+                form kontak, dan efek animasi. Pastikan semua fitur berfungsi
+                dengan baik di berbagai browser.
+              </p>
+              <div class="step-meta">
+                <span class="tag tag-orange">Pertemuan 5-6</span>
+                <span class="tag tag-blue">JavaScript</span>
+                <span class="tag tag-blue">DOM API</span>
+              </div>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-content">
+              <h4>Version Control & Deployment</h4>
+              <p>
+                Upload proyek ke GitHub, lakukan review kode antar anggota tim,
+                kemudian deploy ke Netlify. Dapatkan URL website yang dapat
+                diakses siapa saja.
+              </p>
+              <div class="step-meta">
+                <span class="tag tag-orange">Pertemuan 7</span>
+                <span class="tag tag-teal">GitHub</span>
+                <span class="tag tag-teal">Netlify</span>
+              </div>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-content">
+              <h4>Presentasi, Demo & Evaluasi</h4>
+              <p>
+                Presentasikan proyek di depan kelas dengan demo live website.
+                Jelaskan proses pengerjaan, tantangan yang dihadapi, dan dampak
+                nyata bagi UMKM klien.
+              </p>
+              <div class="step-meta">
+                <span class="tag tag-orange">Pertemuan 8</span>
+                <span class="tag tag-blue">Presentasi</span>
+                <span class="tag tag-blue">Demo Live</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ PAGE: PENGUMPULAN ═══════════ -->
+    <div class="page" id="page-pengumpulan">
+      <div class="section-wrap">
+        <div class="section-header">
+          <div class="section-icon">
+            <i data-lucide="upload-cloud" style="width: 22px; height: 22px"></i>
+          </div>
+          <div>
+            <h2>Pengumpulan Proyek</h2>
+            <p>Submit hasil kerja kelompokmu di sini</p>
+          </div>
+        </div>
+
+        <div class="collect-card">
+          <h3>📤 Form Pengumpulan Proyek</h3>
+          <p>
+            Isi formulir berikut dengan lengkap dan benar. Pastikan semua
+            anggota kelompok sudah menyetujui hasil akhir sebelum mengumpulkan.
+          </p>
+
+          <div class="info-note">
+            <i data-lucide="info" style="width: 16px; height: 16px"></i>
+            <span
+              >Batas pengumpulan: <strong>Pertemuan ke-8</strong>. Format file
+              laporan: PDF. Ukuran file maksimal 10MB. Pastikan link GitHub dan
+              Netlify bisa diakses publik.</span
+            >
+          </div>
+
+          <div class="form-group">
+            <label
+              ><i data-lucide="users" style="width: 14px; height: 14px"></i>
+              Nama Kelompok <span class="required">*</span></label
+            >
+            <input
+              type="text"
+              class="form-input"
+              placeholder="cth: Kelompok A — Team DevKrian"
+              id="namaKelompok"
+            />
+          </div>
+          <div class="form-group">
+            <label
+              ><i data-lucide="user" style="width: 14px; height: 14px"></i> Nama
+              Anggota Kelompok <span class="required">*</span></label
+            >
+            <textarea
+              class="form-textarea"
+              placeholder="Tuliskan semua nama anggota, satu nama per baris:&#10;1. Nama Siswa (NIS)&#10;2. Nama Siswa (NIS)"
+              id="namaAnggota"
+              rows="4"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label
+              ><i data-lucide="store" style="width: 14px; height: 14px"></i>
+              Nama UMKM / Klien <span class="required">*</span></label
+            >
+            <input
+              type="text"
+              class="form-input"
+              placeholder="cth: Warung Nasi Bu Sari"
+              id="namaUMKM"
+            />
+          </div>
+          <div class="form-group">
+            <label
+              ><i data-lucide="globe" style="width: 14px; height: 14px"></i>
+              Link Website (Netlify) <span class="required">*</span></label
+            >
+            <input
+              type="url"
+              class="form-input"
+              placeholder="https://nama-proyek.netlify.app"
+              id="linkWebsite"
+            />
+          </div>
+          <div class="form-group">
+            <label
+              ><i data-lucide="github" style="width: 14px; height: 14px"></i>
+              Link Repositori GitHub <span class="required">*</span></label
+            >
+            <input
+              type="url"
+              class="form-input"
+              placeholder="https://github.com/username/nama-repo"
+              id="linkGithub"
+            />
+          </div>
+          <div class="form-group">
+            <label
+              ><i data-lucide="file-text" style="width: 14px; height: 14px"></i>
+              Upload Laporan (PDF) <span class="required">*</span></label
+            >
+            <div
+              class="upload-area"
+              id="uploadArea"
+              onclick="document.getElementById('fileInput').click()"
+              ondragover="handleDragOver(event)"
+              ondrop="handleDrop(event)"
+              ondragleave="handleDragLeave(event)"
+            >
+              <i
+                data-lucide="upload-cloud"
+                style="
+                  width: 36px;
+                  height: 36px;
+                  display: block;
+                  margin: 0 auto 10px;
+                  color: var(--primary);
+                "
+              ></i>
+              <p id="uploadText">
+                Klik untuk memilih file, atau drag & drop di sini
+              </p>
+              <span>Format PDF • Maks. 10MB</span>
+            </div>
+            <input
+              type="file"
+              id="fileInput"
+              accept=".pdf"
+              style="display: none"
+              onchange="handleFileSelect(event)"
+            />
+          </div>
+          <div class="form-group">
+            <label
+              ><i
+                data-lucide="message-square"
+                style="width: 14px; height: 14px"
+              ></i>
+              Deskripsi Proyek Singkat</label
+            >
+            <textarea
+              class="form-textarea"
+              placeholder="Ceritakan secara singkat tentang proyek kalian: apa yang dibuat, fitur utama, dan dampak bagi UMKM klien..."
+              id="deskripsi"
+            ></textarea>
+          </div>
+
+          <button class="submit-btn" onclick="submitForm()">
+            <i data-lucide="send" style="width: 18px; height: 18px"></i>
+            Kumpulkan Proyek
+          </button>
+
+          <div class="success-msg" id="successMsg">
+            <i
+              data-lucide="check-circle"
+              style="
+                width: 40px;
+                height: 40px;
+                display: block;
+                margin: 0 auto 10px;
+              "
+            ></i>
+            <h4>🎉 Proyek Berhasil Dikumpulkan!</h4>
+            <p>
+              Terima kasih! Data kalian telah tersimpan. Guru akan menghubungi
+              jika ada yang perlu diperbaiki.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p class="footer-title">Media Pembelajaran Interaktif</p>
+
+        <p class="footer-sub">
+          PLP Universitas Negeri Surabaya · SMK Yapalis Krian
+        </p>
+
+        <p class="footer-copy">© 2026. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // ================= INIT =================
+      document.addEventListener("DOMContentLoaded", () => {
+        lucide.createIcons();
+        updateProgress("home");
+      });
+
+      // ================= NAVIGATION =================
+      function showPage(e, page) {
+        const target = document.getElementById("page-" + page);
+
+        if (!target) {
+          console.error("Page tidak ditemukan:", page);
+          return;
+        }
+
+        // hide semua page
+        document.querySelectorAll(".page").forEach((p) => {
+          p.classList.remove("active");
+        });
+
+        // tampilkan target
+        target.classList.add("active");
+
+        // nav active
+        document.querySelectorAll(".nav-tab").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        if (e) e.currentTarget.classList.add("active");
+
+        // update progress
+        updateProgress(page);
+
+        // refresh icon
+        lucide.createIcons();
+      }
+
+      // ================= HOME PANEL =================
+      function showPanel(e, panel) {
+        document.querySelectorAll(".panel-content").forEach((c) => {
+          c.classList.remove("active");
+        });
+
+        document.getElementById("panel-" + panel).classList.add("active");
+
+        document.querySelectorAll(".panel-btn").forEach((b) => {
+          b.classList.remove("active");
+        });
+
+        e.currentTarget.classList.add("active");
+      }
+
+      // ================= PROGRESS =================
+      function updateProgress(id) {
+        const pages = [
+          "home",
+          "materi",
+          "jadwal",
+          "tutorial",
+          "proyek",
+          "pengumpulan",
+        ];
+        const pct = ((pages.indexOf(id) + 1) / pages.length) * 100;
+
+        const bar = document.getElementById("progressBar");
+        if (bar) bar.style.width = pct + "%";
+      }
+
+      // ================= MATERI =================
+      function showMateri(e, id) {
+        const target = document.getElementById("materi-" + id);
+
+        if (!target) {
+          console.error("Materi tidak ditemukan:", id);
+          return;
+        }
+
+        document.querySelectorAll(".materi-content").forEach((c) => {
+          c.classList.remove("active");
+        });
+
+        target.classList.add("active");
+
+        document.querySelectorAll(".materi-btn").forEach((b) => {
+          b.classList.remove("active");
+        });
+
+        if (e) e.currentTarget.classList.add("active");
+
+        lucide.createIcons();
+      }
+
+      // ================= TUTORIAL =================
+      function showTutorial(e, id) {
+        const target = document.getElementById("tutorial-" + id);
+
+        if (!target) {
+          console.error("Tutorial tidak ditemukan:", id);
+          return;
+        }
+
+        document.querySelectorAll(".tutorial-section").forEach((s) => {
+          s.classList.remove("active");
+        });
+
+        target.classList.add("active");
+
+        document.querySelectorAll(".tutorial-tab-btn").forEach((b) => {
+          b.classList.remove("active");
+        });
+
+        if (e) e.currentTarget.classList.add("active");
+
+        lucide.createIcons();
+      }
+
+      // ================= ACCORDION =================
+      function toggleAccordion(header) {
+        const acc = header.parentElement;
+        const wasOpen = acc.classList.contains("open");
+
+        document.querySelectorAll(".accordion.open").forEach((a) => {
+          a.classList.remove("open");
+        });
+
+        if (!wasOpen) acc.classList.add("open");
+      }
+
+      // ================= YOUTUBE =================
+      function openYT(id) {
+        window.open("https://www.youtube.com/watch?v=" + id, "_blank");
+      }
+
+      // ================= FILE UPLOAD =================
+      function handleFileSelect(e) {
+        const file = e.target.files[0];
+        if (file) showFile(file);
+      }
+
+      function handleDragOver(e) {
+        e.preventDefault();
+        document.getElementById("uploadArea").classList.add("drag");
+      }
+
+      function handleDragLeave() {
+        document.getElementById("uploadArea").classList.remove("drag");
+      }
+
+      function handleDrop(e) {
+        e.preventDefault();
+        document.getElementById("uploadArea").classList.remove("drag");
+
+        const file = e.dataTransfer.files[0];
+
+        if (file && file.type === "application/pdf") {
+          showFile(file);
+        } else {
+          alert("Hanya file PDF yang diperbolehkan!");
+        }
+      }
+
+      function showFile(file) {
+        const mb = (file.size / 1024 / 1024).toFixed(2);
+
+        document.getElementById("uploadText").innerHTML =
+          `<strong style="color:var(--primary)">✅ ${file.name}</strong><br>
+     <small style="color:var(--text-muted)">${mb} MB • PDF</small>`;
+
+        document.getElementById("uploadArea").style.borderColor =
+          "var(--accent)";
+        document.getElementById("uploadArea").style.background = "#E0F9F6";
+      }
+
+      // ================= FORM =================
+      function submitForm() {
+        const fields = [
+          "namaKelompok",
+          "namaAnggota",
+          "namaUMKM",
+          "linkWebsite",
+          "linkGithub",
+        ];
+        let valid = true;
+
+        fields.forEach((id) => {
+          const el = document.getElementById(id);
+
+          if (!el.value.trim()) {
+            el.style.borderColor = "#E53935";
+            valid = false;
+          } else {
+            el.style.borderColor = "var(--border)";
+          }
+        });
+
+        if (!valid) {
+          alert("Harap isi semua field yang wajib diisi (*)");
+          return;
+        }
+
+        const btn = document.querySelector(".submit-btn");
+        btn.disabled = true;
+        btn.innerHTML = '<i data-lucide="loader"></i> Mengirim...';
+
+        lucide.createIcons();
+
+        setTimeout(() => {
+          document.getElementById("successMsg").style.display = "block";
+          document
+            .getElementById("successMsg")
+            .scrollIntoView({ behavior: "smooth" });
+        }, 1200);
+      }
+    </script>
+  </body>
+</html>
