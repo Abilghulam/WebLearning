@@ -2822,8 +2822,16 @@
       }
 
       /* ── PROYEK ── */
-      .proyek-hero {
-        background: linear-gradient(135deg, #0d1b2a 0%, #0f4c81 100%);
+      /* ═══════════════════════════════════════
+       GLOBAL INTRO HERO
+    ═══════════════════════════════════════ */
+      .proyek-hero-global {
+        background: linear-gradient(
+          135deg,
+          #0d1b2a 0%,
+          #0f4c81 60%,
+          #00443a 100%
+        );
         border-radius: var(--radius);
         padding: 36px 32px;
         margin-bottom: 28px;
@@ -2831,18 +2839,17 @@
         position: relative;
         overflow: hidden;
       }
-      .proyek-hero::after {
-        content: "</>";
+      .proyek-hero-global::before {
+        content: "🎨";
         position: absolute;
-        right: 32px;
-        bottom: -16px;
-        font-family: var(--font-display);
+        right: 28px;
+        bottom: -10px;
         font-size: 7rem;
-        font-weight: 800;
-        color: rgba(255, 255, 255, 0.05);
+        opacity: 0.08;
         line-height: 1;
+        pointer-events: none;
       }
-      .proyek-hero .case-badge {
+      .proyek-hero-global .case-badge {
         display: inline-flex;
         align-items: center;
         gap: 6px;
@@ -2855,131 +2862,457 @@
         font-weight: 700;
         margin-bottom: 14px;
       }
-      .proyek-hero h2 {
+      .proyek-hero-global h2 {
         font-family: var(--font-display);
         font-size: clamp(1.3rem, 3vw, 1.8rem);
         font-weight: 800;
         margin-bottom: 10px;
       }
-      .proyek-hero p {
+      .proyek-hero-global p {
         font-size: 0.9rem;
-        opacity: 0.8;
-        line-height: 1.7;
+        opacity: 0.82;
+        line-height: 1.75;
+        max-width: 740px;
+      }
+
+      /* Info strip */
+      .info-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 22px;
+      }
+      .info-chip {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 10px;
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .info-chip .ic-icon {
+        font-size: 1.1rem;
+      }
+      .info-chip .ic-text {
+        font-size: 0.78rem;
+      }
+      .info-chip .ic-text strong {
+        display: block;
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      /* ═══════════════════════════════════════
+       GROUP SELECTOR BAR
+    ═══════════════════════════════════════ */
+      .group-selector {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 28px;
+      }
+      .group-btn {
+        padding: 8px 16px;
+        border-radius: 100px;
+        border: 2px solid var(--border);
+        background: white;
+        font-family: var(--font-body);
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .group-btn:hover {
+        border-color: var(--primary-light);
+        color: var(--primary);
+        transform: translateY(-1px);
+      }
+      .group-btn.active {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: white;
+        box-shadow: 0 4px 14px rgba(15, 76, 129, 0.25);
+      }
+      .group-panel {
+        display: none;
+        animation: fadeSlide 0.35s ease;
+      }
+      .group-panel.active {
+        display: block;
+      }
+      @keyframes fadeSlide {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ═══════════════════════════════════════
+       PER-GROUP HERO — UNIQUE THEMES
+    ═══════════════════════════════════════ */
+      .proyek-hero {
+        border-radius: var(--radius);
+        padding: 36px 32px;
+        margin-bottom: 24px;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+      .proyek-hero .hero-emoji {
+        position: absolute;
+        right: 24px;
+        bottom: -14px;
+        font-size: 6.5rem;
+        opacity: 0.1;
+        line-height: 1;
+        pointer-events: none;
+      }
+      .proyek-hero .case-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border-radius: 100px;
+        padding: 5px 14px;
+        font-size: 0.77rem;
+        font-weight: 700;
+        margin-bottom: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .proyek-hero h2 {
+        font-family: var(--font-display);
+        font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+        font-weight: 800;
+        margin-bottom: 10px;
+      }
+      .proyek-hero .hero-desc {
+        font-size: 0.88rem;
+        opacity: 0.85;
+        line-height: 1.75;
         max-width: 680px;
       }
+
+      /* hero-1: Kuliner — warm orange-red */
+      .hero-1 {
+        background: linear-gradient(
+          135deg,
+          #7c1c00 0%,
+          #c0392b 40%,
+          #e67e22 100%
+        );
+      }
+      /* hero-2: Fashion — deep purple-pink */
+      .hero-2 {
+        background: linear-gradient(
+          135deg,
+          #2d1060 0%,
+          #7c3aed 45%,
+          #ec4899 100%
+        );
+      }
+      /* hero-3: Desain Grafis — teal-blue */
+      .hero-3 {
+        background: linear-gradient(
+          135deg,
+          #003d35 0%,
+          #0f4c81 50%,
+          #00c2a8 100%
+        );
+      }
+      /* hero-4: Fotografi — charcoal-gold */
+      .hero-4 {
+        background: linear-gradient(135deg, #1a1a2e 0%, #333 50%, #b45309 100%);
+      }
+      /* hero-5: Skincare — rose-blush */
+      .hero-5 {
+        background: linear-gradient(
+          135deg,
+          #6b0030 0%,
+          #be185d 50%,
+          #fb7185 100%
+        );
+      }
+      /* hero-6: Kriya — earth green-brown */
+      .hero-6 {
+        background: linear-gradient(
+          135deg,
+          #1a2e0a 0%,
+          #386641 50%,
+          #a7c957 100%
+        );
+      }
+
+      /* ═══════════════════════════════════════
+       STUDI KASUS CARD
+    ═══════════════════════════════════════ */
       .studi-kasus-card {
         background: white;
         border-radius: var(--radius);
         border: 1px solid var(--border);
         box-shadow: var(--shadow);
         overflow: hidden;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
       }
       .studi-header {
-        background: linear-gradient(135deg, #fff0eb, #ffe4d9);
-        padding: 20px 24px;
-        border-bottom: 1px solid #ffd5c2;
+        padding: 18px 22px;
+        border-bottom: 1px solid var(--border);
         display: flex;
         gap: 14px;
         align-items: center;
       }
       .studi-icon {
-        width: 44px;
-        height: 44px;
-        background: var(--accent2);
+        width: 42px;
+        height: 42px;
         border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
         flex-shrink: 0;
+        font-size: 1.1rem;
       }
       .studi-header h3 {
-        font-size: 1rem;
+        font-size: 0.98rem;
         font-weight: 800;
-        color: #8b3a1a;
+        color: var(--primary);
       }
       .studi-header p {
-        font-size: 0.82rem;
-        color: #a04520;
+        font-size: 0.8rem;
+        color: var(--text-muted);
         margin-top: 2px;
       }
       .studi-body {
-        padding: 24px;
+        padding: 22px 24px;
       }
-      .studi-body p {
-        font-size: 0.9rem;
-        line-height: 1.75;
+      .studi-body > p {
+        font-size: 0.88rem;
+        line-height: 1.78;
         color: #374151;
         margin-bottom: 14px;
       }
       .studi-body strong {
         color: var(--primary);
       }
-      .steps-container {
-        counter-reset: step;
-      }
-      .step-card {
-        display: flex;
-        gap: 16px;
-        margin-bottom: 16px;
-        background: white;
-        border-radius: 12px;
-        border: 1px solid var(--border);
-        padding: 20px;
-        box-shadow: var(--shadow);
-        position: relative;
-      }
-      .step-card::before {
-        counter-increment: step;
-        content: counter(step);
-        width: 36px;
-        height: 36px;
-        background: var(--gradient);
-        color: white;
-        border-radius: 50%;
+
+      /* ═══════════════════════════════════════
+       SCOPE CARDS (ruang lingkup)
+    ═══════════════════════════════════════ */
+      .scope-label {
+        font-family: var(--font-display);
+        font-size: 0.78rem;
         font-weight: 800;
-        font-size: 0.88rem;
+        color: var(--primary);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin: 20px 0 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .scope-label .sl-line {
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+
+      .scope-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .scope-card {
+        border-radius: 12px;
+        padding: 16px 18px;
+        border: 1.5px solid var(--border);
+        background: var(--surface);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .scope-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+      }
+      .scope-card .sc-top {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 8px;
+      }
+      .sc-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
+        color: white;
+        font-size: 0.85rem;
         flex-shrink: 0;
       }
-      .step-content h4 {
-        font-size: 0.95rem;
-        font-weight: 700;
+      .sc-title {
+        font-size: 0.82rem;
+        font-weight: 800;
         color: var(--text);
-        margin-bottom: 6px;
       }
-      .step-content p {
-        font-size: 0.85rem;
+      .scope-card p {
+        font-size: 0.78rem;
         color: var(--text-muted);
         line-height: 1.6;
       }
-      .step-content .step-meta {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-        margin-top: 8px;
-      }
+
+      /* ═══════════════════════════════════════
+       DELIVERABLE GRID
+    ═══════════════════════════════════════ */
       .deliverable-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 12px;
-        margin: 20px 0;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 10px;
+        margin-bottom: 20px;
       }
       .deliverable-item {
         background: var(--surface2);
         border-radius: 10px;
-        padding: 16px;
+        padding: 14px 16px;
         border-left: 4px solid var(--accent);
-        font-size: 0.85rem;
+        font-size: 0.83rem;
       }
       .deliverable-item strong {
         display: block;
         color: var(--primary);
         margin-bottom: 4px;
-        font-size: 0.82rem;
+        font-size: 0.8rem;
+      }
+
+      /* ═══════════════════════════════════════
+       WEBSITE EXAMPLES
+    ═══════════════════════════════════════ */
+      .web-example-label {
+        font-family: var(--font-display);
+        font-size: 0.78rem;
+        font-weight: 800;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin: 20px 0 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .web-example-label .wel-line {
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+
+      .web-example-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+      .web-example-card {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .web-example-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+      }
+      .web-example-thumb {
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: white;
+        font-family: var(--font-display);
+        position: relative;
+        overflow: hidden;
+      }
+      .web-example-thumb::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.08);
+      }
+      .web-example-info {
+        padding: 10px 12px;
+        background: white;
+      }
+      .web-example-info strong {
+        display: block;
+        font-size: 0.76rem;
+        font-weight: 700;
+        color: var(--text);
+      }
+      .web-example-info span {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+      }
+      .web-example-info a {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+        margin-top: 4px;
+      }
+      .web-example-info a:hover {
+        text-decoration: underline;
+      }
+
+      /* ═══════════════════════════════════════
+       TAGS
+    ═══════════════════════════════════════ */
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 3px 10px;
+        border-radius: 100px;
+        font-size: 0.7rem;
+        font-weight: 700;
+      }
+      .tag-blue {
+        background: #dbeafe;
+        color: #1e40af;
+      }
+      .tag-teal {
+        background: #ccfbf1;
+        color: #0f766e;
+      }
+      .tag-orange {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      .tag-pink {
+        background: #fce7f3;
+        color: #9d174d;
+      }
+      .tag-purple {
+        background: #ede9fe;
+        color: #5b21b6;
+      }
+      .tag-green {
+        background: #d1fae5;
+        color: #065f46;
       }
 
       /* ── PENGUMPULAN ── */
@@ -6899,189 +7232,1907 @@
     <!-- ═══════════ PAGE: PROYEK ═══════════ -->
     <div class="page" id="page-proyek">
       <div class="section-wrap">
+        <!-- HEADER -->
         <div class="section-header">
           <div class="section-icon">
             <i data-lucide="briefcase" style="width: 22px; height: 22px"></i>
           </div>
           <div>
             <h2>Deskripsi Proyek</h2>
-            <p>
-              Panduan lengkap pengerjaan proyek PJBL berbasis studi kasus nyata
-            </p>
+            <p>Proyek desain UI/UX website UMKM berbasis studi kasus nyata</p>
           </div>
         </div>
 
-        <div class="proyek-hero">
+        <!-- GLOBAL HERO -->
+        <div class="proyek-hero-global">
           <div class="case-badge">
-            <i data-lucide="alert-circle" style="width: 12px; height: 12px"></i>
-            Studi Kasus Nyata
+            <i data-lucide="book" style="width: 12px; height: 12px"></i>
+            Studi Kasus Nyata — UI/UX Design
           </div>
-          <h2>Membangun Aplikasi Web Sistem Informasi UMKM Lokal</h2>
+          <h2>
+            Desain UI/UX Aplikasi Website & Mobile UMKM Lokal menggunakan Figma
+          </h2>
           <p>
-            Banyak UMKM di Krian, Sidoarjo belum memiliki kehadiran digital.
-            Produk mereka hanya dijual secara offline dan sulit ditemukan oleh
-            konsumen yang lebih luas. Proyek ini menantang kalian untuk membuat
-            solusi nyata bagi masalah ini.
+            Banyak UMKM potensial di wilayah Surabaya dan Sidoarjo belum
+            memiliki identitas digital yang kuat. Produk dan jasa mereka
+            berkualitas, namun tampilan online-nya belum menarik atau bahkan
+            belum ada. Proyek ini menantang kamu untuk menjadi
+            <strong style="color: #00e5d2">desainer UI/UX nyata</strong> dengan
+            memahami kebutuhan pengguna, merancang solusi visual, dan
+            menghasilkan prototipe interaktif yang siap dipresentasikan kepada
+            klien.
           </p>
-        </div>
-
-        <div class="studi-kasus-card">
-          <div class="studi-header">
-            <div class="studi-icon">
-              <i data-lucide="map-pin" style="width: 20px; height: 20px"></i>
+          <div class="info-strip">
+            <div class="info-chip">
+              <span class="ic-icon"
+                ><i
+                  data-lucide="file-output"
+                  style="width: 18px; height: 18px"
+                ></i
+              ></span>
+              <span class="ic-text"
+                ><strong>Output Utama</strong>Prototipe UI/UX di Figma</span
+              >
             </div>
-            <div>
-              <h3>Latar Belakang Studi Kasus</h3>
-              <p>Permasalahan nyata di lingkungan sekitar SMK Yapalis Krian</p>
+            <div class="info-chip">
+              <span class="ic-icon"
+                ><i
+                  data-lucide="users-round"
+                  style="width: 18px; height: 18px"
+                ></i
+              ></span>
+              <span class="ic-text"
+                ><strong>Kelompok</strong>6 kelompok (6–7 siswa)</span
+              >
             </div>
-          </div>
-          <div class="studi-body">
-            <p>
-              Berdasarkan data dari Dinas Koperasi dan UKM Kabupaten Sidoarjo,
-              <strong
-                >terdapat lebih dari 2.000 UMKM aktif di Kecamatan Krian</strong
-              >. Namun, hanya sekitar 15% yang memiliki kehadiran online.
-              Sebagian besar masih bergantung pada penjualan langsung atau dari
-              mulut ke mulut.
-            </p>
-            <p>
-              Akibatnya,
-              <strong>potensi pasar yang lebih luas tidak terjangkau</strong>,
-              konsumen kesulitan menemukan produk lokal berkualitas, dan
-              pendapatan UMKM terbatas. Di sinilah peran kalian sebagai calon
-              pengembang teknologi menjadi sangat penting.
-            </p>
-            <p>
-              Tugas kalian adalah membangun
-              <strong>website profil UMKM</strong> atau
-              <strong>katalog produk digital</strong> untuk salah satu UMKM
-              nyata di sekitar Krian. Wawancarai pemilik UMKM, pahami kebutuhan
-              mereka, dan buat solusi web yang benar-benar dapat mereka gunakan.
-            </p>
-            <div class="deliverable-grid">
-              <div class="deliverable-item">
-                <strong>🏪 Target Klien</strong>UMKM di Kecamatan Krian
-                (kuliner, kerajinan, atau jasa)
-              </div>
-              <div class="deliverable-item">
-                <strong>🌐 Output Utama</strong>Website profil/katalog yang
-                dapat diakses online
-              </div>
-              <div class="deliverable-item">
-                <strong>👥 Cara Kerja</strong>Kelompok 3-4 orang dengan
-                pembagian tugas jelas
-              </div>
-              <div class="deliverable-item">
-                <strong>⏱️ Durasi</strong>8 pertemuan (±6 minggu pengerjaan)
-              </div>
+            <div class="info-chip">
+              <span class="ic-icon"
+                ><i data-lucide="clock" style="width: 18px; height: 18px"></i
+              ></span>
+              <span class="ic-text"
+                ><strong>Durasi</strong>4 minggu (8 pertemuan)</span
+              >
             </div>
           </div>
         </div>
 
-        <h3
-          style="
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 16px;
-          "
-        >
-          <i
-            data-lucide="list-ordered"
-            style="width: 18px; height: 18px; vertical-align: -3px"
-          ></i>
-          Langkah-Langkah Pengerjaan
-        </h3>
-        <div class="steps-container">
-          <div class="step-card">
-            <div class="step-content">
-              <h4>Identifikasi Masalah & Pemilihan UMKM</h4>
+        <!-- GROUP SELECTOR -->
+        <div class="group-selector" id="groupSelector">
+          <button class="group-btn active" onclick="showGroup(0, this)">
+            <i data-lucide="soup" style="width: 16px; height: 16px"></i>
+            Kelompok 1
+          </button>
+          <button class="group-btn" onclick="showGroup(1, this)">
+            <i data-lucide="shirt" style="width: 16px; height: 16px"></i>
+            Kelompok 2
+          </button>
+          <button class="group-btn" onclick="showGroup(2, this)">
+            <i data-lucide="brush" style="width: 16px; height: 16px"></i>
+            Kelompok 3
+          </button>
+          <button class="group-btn" onclick="showGroup(3, this)">
+            <i data-lucide="camera" style="width: 16px; height: 16px"></i>
+            Kelompok 4
+          </button>
+          <button class="group-btn" onclick="showGroup(4, this)">
+            <i data-lucide="mirror-round" style="width: 16px; height: 16px"></i>
+            Kelompok 5
+          </button>
+          <button class="group-btn" onclick="showGroup(5, this)">
+            <i data-lucide="palette" style="width: 16px; height: 16px"></i>
+            Kelompok 6
+          </button>
+        </div>
+
+        <!-- ════════════════════════════════════════════
+       KELOMPOK 1 — UMKM Makanan & Kuliner
+  ════════════════════════════════════════════ -->
+        <div class="group-panel active" id="group-0">
+          <div class="proyek-hero hero-1">
+            <div class="hero-emoji">
+              <i data-lucide="soup" style="width: 150px; height: 150px"></i>
+            </div>
+            <div class="case-badge">
+              <i data-lucide="users" style="width: 11px; height: 11px"></i>
+              Kelompok 1 — Makanan & Kuliner
+            </div>
+            <h2>UI/UX Design Website & Mobile<br />UMKM Makanan & Kuliner</h2>
+            <p class="hero-desc">
+              Rancang pengalaman digital yang membuat orang langsung lapar
+              begitu membuka halaman — dari warna hangat yang menggugah selera,
+              foto makanan yang menawan, hingga alur pesan yang semudah menutup
+              mata.
+            </p>
+          </div>
+
+          <!-- Latar Belakang -->
+          <div class="studi-kasus-card">
+            <div
+              class="studi-header"
+              style="background: linear-gradient(135deg, #fff5f0, #ffe8dc)"
+            >
+              <div
+                class="studi-icon"
+                style="background: linear-gradient(135deg, #c0392b, #e67e22)"
+              >
+                <i data-lucide="info" style="width: 18px; height: 18px"></i>
+              </div>
+              <div>
+                <h3 style="color: #7c1c00">Latar Belakang Studi Kasus</h3>
+                <p>
+                  UMKM Kuliner Khas Surabaya & Sidoarjo yang butuh kehadiran
+                  digital
+                </p>
+              </div>
+            </div>
+            <div class="studi-body">
               <p>
-                Lakukan survei lapangan di sekitar Krian. Temukan UMKM yang
-                belum memiliki website. Wawancara pemilik untuk memahami
-                kebutuhan, produk, dan target pelanggan mereka.
+                Surabaya dan Sidoarjo dikenal sebagai surga kuliner Jawa Timur —
+                dari <strong>rawon Pak Pangat</strong> di Surabaya,
+                <strong>lontong balap</strong> Wonokromo, hingga
+                <strong>bandeng asap</strong> khas Sidoarjo. Namun banyak UMKM
+                kuliner legendaris ini hanya dikenal dari mulut ke mulut karena
+                tidak memiliki tampilan digital yang representatif.
               </p>
-              <div class="step-meta">
-                <span class="tag tag-orange">Pertemuan 1</span>
-                <span class="tag tag-blue">Wawancara</span>
-                <span class="tag tag-blue">Analisis Kebutuhan</span>
+              <p>
+                Kamu berperan sebagai tim desainer UI/UX yang dipercaya oleh
+                salah satu UMKM kuliner lokal untuk
+                <strong>merancang website dan tampilan mobile</strong> mereka
+                agar dapat menarik pelanggan lebih luas, mempermudah pemesanan,
+                dan mencerminkan identitas produk mereka secara visual.
+              </p>
+              <div class="deliverable-grid">
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #e67e22"
+                >
+                  <strong>
+                    <i
+                      data-lucide="target"
+                      style="width: 12px; height: 12px"
+                    ></i>
+                    Target Klien</strong
+                  >UMKM kuliner khas Surabaya / Sidoarjo (nyata atau fiktif
+                  berbasis riset)
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #e67e22"
+                >
+                  <strong>
+                    <i
+                      data-lucide="tablet-smartphone"
+                      style="width: 12px; height: 12px"
+                    ></i>
+                    Media Platform</strong
+                  >Website desktop & tampilan mobile (responsive)
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #e67e22"
+                >
+                  <strong>
+                    <i
+                      data-lucide="file-output"
+                      style="width: 12px; height: 12px"
+                    ></i>
+                    Output</strong
+                  >Wireframe + Mockup + Prototype interaktif di Figma
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #e67e22"
+                >
+                  <strong>
+                    <i data-lucide="user" style="width: 12px; height: 12px"></i>
+                    Target Pengguna</strong
+                  >Pelanggan lokal Surabaya–Sidoarjo & wisatawan kuliner
+                </div>
               </div>
             </div>
           </div>
-          <div class="step-card">
-            <div class="step-content">
-              <h4>Perencanaan & Desain UI/UX (Wireframe)</h4>
-              <p>
-                Buat wireframe menggunakan Figma atau kertas. Tentukan struktur
-                halaman, navigasi, warna, dan font. Presentasikan mockup kepada
-                pemilik UMKM untuk validasi.
-              </p>
-              <div class="step-meta">
-                <span class="tag tag-orange">Pertemuan 2-3</span>
-                <span class="tag tag-blue">Figma</span>
-                <span class="tag tag-blue">Wireframe</span>
+
+          <!-- Scope -->
+          <div class="studi-kasus-card">
+            <div
+              class="studi-header"
+              style="background: linear-gradient(135deg, #fff5f0, #ffe8dc)"
+            >
+              <div
+                class="studi-icon"
+                style="background: linear-gradient(135deg, #c0392b, #e67e22)"
+              >
+                <i data-lucide="compass" style="width: 18px; height: 18px"></i>
+              </div>
+              <div>
+                <h3 style="color: #7c1c00">Ruang Lingkup & Clue Pengerjaan</h3>
+                <p>
+                  Apa yang perlu kamu eksplorasi dan rancang sebagai tim
+                  desainer
+                </p>
+              </div>
+            </div>
+            <div class="studi-body">
+              <div class="scope-label">
+                <span>Eksplorasi & Riset</span>
+                <div class="sl-line"></div>
+              </div>
+              <div class="scope-grid">
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #c0392b">
+                      <i
+                        data-lucide="user"
+                        style="width: 16px; height: 16px"
+                      ></i>
+                    </div>
+                    <span class="sc-title">Kenali Target Pengguna</span>
+                  </div>
+                  <p>
+                    Siapa yang akan menggunakan website ini? Warga lokal yang
+                    cari tempat makan, atau wisatawan yang ingin oleh-oleh khas?
+                    Buat user persona untuk masing-masing tipe.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #e67e22">
+                      <i
+                        data-lucide="search"
+                        style="width: 16px; height: 16px"
+                      ></i>
+                    </div>
+                    <span class="sc-title">Analisis Kompetitor</span>
+                  </div>
+                  <p>
+                    Lihat bagaimana Warung Mbak Sri, Depot Bu Rudy, atau Waroeng
+                    SS menampilkan diri secara digital. Apa yang bisa
+                    ditingkatkan dari desain mereka?
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #c0392b">
+                      <i
+                        data-lucide="palette"
+                        style="width: 16px; height: 16px"
+                      ></i>
+                    </div>
+                    <span class="sc-title">Visual & Identitas Brand</span>
+                  </div>
+                  <p>
+                    Pilih palet warna yang membangkitkan selera makan (merah,
+                    oranye, kuning hangat). Tentukan font dan gaya visual yang
+                    mencerminkan karakter UMKM kuliner tersebut.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #e67e22">
+                      <i
+                        data-lucide="file-text"
+                        style="width: 16px; height: 16px"
+                      ></i>
+                    </div>
+                    <span class="sc-title">Halaman Wajib</span>
+                  </div>
+                  <p>
+                    Rancang minimal: Beranda (hero + tagline), Menu (katalog
+                    makanan + harga), Tentang Kami, Cara Pesan, dan
+                    Kontak/Lokasi beserta Google Maps.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #c0392b">
+                      <i
+                        data-lucide="smartphone"
+                        style="width: 16px; height: 16px"
+                      ></i>
+                    </div>
+                    <span class="sc-title">Mobile Experience</span>
+                  </div>
+                  <p>
+                    Banyak pelanggan kuliner mengakses lewat HP. Pastikan
+                    tampilan mobile-friendly: tombol pesan mudah dijangkau ibu
+                    jari, foto makanan terlihat jelas di layar kecil.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #e67e22">
+                      <i
+                        data-lucide="star"
+                        style="width: 16px; height: 16px"
+                      ></i>
+                    </div>
+                    <span class="sc-title">Fitur Unggulan</span>
+                  </div>
+                  <p>
+                    Eksplorasi fitur menarik: galeri foto menu interaktif,
+                    tombol pesan via WhatsApp, peta lokasi, jam buka, atau
+                    ulasan pelanggan yang membuat calon pembeli yakin.
+                  </p>
+                </div>
+              </div>
+
+              <div class="web-example-label">
+                <span>Referensi Website Kuliner</span>
+                <div class="wel-line"></div>
+              </div>
+              <div class="web-example-grid">
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #c0392b, #e74c3c);
+                    "
+                  >
+                    GF
+                  </div>
+                  <div class="web-example-info">
+                    <strong>GrabFood Restaurant Page</strong>
+                    <span>Layout menu & foto produk kuliner</span>
+                    <a href="https://food.grab.com/id/en/" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #e67e22, #f39c12);
+                    "
+                  >
+                    WS
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Warunk Upnormal</strong>
+                    <span>Branding & menu visual cafe Indonesia</span>
+                    <a href="https://warunkupnormal.id/" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #7b341e, #c05621);
+                    "
+                  >
+                    ES
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Es Teler 77</strong>
+                    <span>Website franchise kuliner lokal Indonesia</span>
+                    <a href="https://esteler77.com/en" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #1a1a2e, #e74c3c);
+                    "
+                  >
+                    GK
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Geprek Bensu</strong>
+                    <span>Landing page menu & lokasi outlet</span>
+                    <a href="https://iamgeprekbensu.com/id" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="scope-label">
+                <span>Deliverable Proyek</span>
+                <div class="sl-line"></div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  flex-wrap: wrap;
+                  margin-top: 4px;
+                "
+              >
+                <span class="tag tag-orange">User Persona</span>
+                <span class="tag tag-orange">User Flow</span>
+                <span class="tag tag-blue">Wireframe Desktop</span>
+                <span class="tag tag-blue">Wireframe Mobile</span>
+                <span class="tag tag-teal">Mockup Visual</span>
+                <span class="tag tag-teal">Style Guide</span>
+                <span class="tag tag-purple">Prototype Interaktif</span>
+                <span class="tag tag-purple">Presentasi</span>
               </div>
             </div>
           </div>
-          <div class="step-card">
-            <div class="step-content">
-              <h4>Pengembangan Front-End (HTML & CSS)</h4>
+        </div>
+        <!-- /group-0 -->
+
+        <!-- ════════════════════════════════════════════
+       KELOMPOK 2 — UMKM Fashion / Brand Lokal
+  ════════════════════════════════════════════ -->
+        <div class="group-panel" id="group-1">
+          <div class="proyek-hero hero-2">
+            <div class="hero-emoji">👗</div>
+            <div class="case-badge">
+              <i data-lucide="users" style="width: 11px; height: 11px"></i>
+              Kelompok 2 — 6 s/d 7 Siswa
+            </div>
+            <h2>
+              UI/UX Design Website & Mobile<br />UMKM Fashion & Brand Pakaian
+              Lokal
+            </h2>
+            <p class="hero-desc">
+              Bawa brand fashion lokal Surabaya ke level berikutnya — desain
+              toko online yang terasa premium, editorial, dan mampu bersaing
+              secara visual dengan brand nasional.
+            </p>
+          </div>
+
+          <div class="studi-kasus-card">
+            <div
+              class="studi-header"
+              style="background: linear-gradient(135deg, #f5f0ff, #ede9fe)"
+            >
+              <div
+                class="studi-icon"
+                style="background: linear-gradient(135deg, #7c3aed, #ec4899)"
+              >
+                🏠
+              </div>
+              <div>
+                <h3 style="color: #4c1d95">Latar Belakang Studi Kasus</h3>
+                <p>
+                  Brand fashion lokal Surabaya yang ingin naik kelas secara
+                  digital
+                </p>
+              </div>
+            </div>
+            <div class="studi-body">
               <p>
-                Implementasikan desain ke kode HTML dan CSS. Pastikan struktur
-                semantik, tampilan menarik, dan responsif di mobile. Gunakan VS
-                Code sebagai editor.
+                Surabaya memiliki ekosistem fashion lokal yang berkembang pesat
+                — dari distro di kawasan Kapas Krampung, brand baju muslim di
+                Wonokromo, hingga brand streetwear anak muda Surabaya yang
+                sedang naik daun. Namun, banyak dari mereka hanya mengandalkan
+                Instagram dan belum memiliki
+                <strong>website toko resmi</strong> yang mencerminkan kualitas
+                produk mereka.
               </p>
-              <div class="step-meta">
-                <span class="tag tag-orange">Pertemuan 3-5</span>
-                <span class="tag tag-blue">HTML5</span>
-                <span class="tag tag-blue">CSS3</span>
-                <span class="tag tag-teal">Responsive</span>
+              <p>
+                Kamu ditugaskan merancang
+                <strong
+                  >UI/UX website e-commerce atau katalog produk fashion</strong
+                >
+                yang mampu menciptakan kesan brand yang kuat, memudahkan
+                pelanggan menemukan dan memilih produk, serta mendorong konversi
+                pembelian melalui desain yang intuitif.
+              </p>
+              <div class="deliverable-grid">
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #7c3aed"
+                >
+                  <strong>🎯 Klien</strong>Brand fashion / distro lokal Surabaya
+                  (nyata atau berbasis riset)
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #7c3aed"
+                >
+                  <strong>📱 Platform</strong>Website desktop & mobile
+                  (e-commerce / katalog)
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #7c3aed"
+                >
+                  <strong>🎨 Output</strong>Wireframe + Mockup + Prototype
+                  interaktif di Figma
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #7c3aed"
+                >
+                  <strong>📍 Konteks</strong>Anak muda Surabaya usia 16–28 tahun
+                  yang fashion-conscious
+                </div>
               </div>
             </div>
           </div>
-          <div class="step-card">
-            <div class="step-content">
-              <h4>Penambahan Interaktivitas dengan JavaScript</h4>
-              <p>
-                Tambahkan fitur interaktif: galeri produk, menu navigasi mobile,
-                form kontak, dan efek animasi. Pastikan semua fitur berfungsi
-                dengan baik di berbagai browser.
-              </p>
-              <div class="step-meta">
-                <span class="tag tag-orange">Pertemuan 5-6</span>
-                <span class="tag tag-blue">JavaScript</span>
-                <span class="tag tag-blue">DOM API</span>
+
+          <div class="studi-kasus-card">
+            <div
+              class="studi-header"
+              style="background: linear-gradient(135deg, #f5f0ff, #ede9fe)"
+            >
+              <div
+                class="studi-icon"
+                style="background: linear-gradient(135deg, #7c3aed, #ec4899)"
+              >
+                <i data-lucide="compass" style="width: 18px; height: 18px"></i>
+              </div>
+              <div>
+                <h3 style="color: #4c1d95">Ruang Lingkup & Clue Pengerjaan</h3>
+                <p>
+                  Eksplorasi desain toko fashion online yang kuat secara visual
+                </p>
+              </div>
+            </div>
+            <div class="studi-body">
+              <div class="scope-grid">
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #7c3aed">👤</div>
+                    <span class="sc-title">Profil Pembeli Fashion</span>
+                  </div>
+                  <p>
+                    Siapa target pasar brand ini? Anak muda Surabaya yang suka
+                    streetwear? Wanita muslimah? Tentukan persona agar desain
+                    tepat sasaran.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #ec4899">🖼️</div>
+                    <span class="sc-title">Visual Merchandising Digital</span>
+                  </div>
+                  <p>
+                    Di fashion, foto adalah segalanya. Rancang layout yang
+                    menonjolkan foto produk: hero image besar, grid katalog yang
+                    elegan, detail produk yang meyakinkan.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #7c3aed">🎨</div>
+                    <span class="sc-title">Identitas Brand</span>
+                  </div>
+                  <p>
+                    Pilih palet warna yang mencerminkan karakter brand:
+                    minimalis monokrom untuk kesan premium, atau bold & colorful
+                    untuk brand streetwear energik?
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #ec4899">📋</div>
+                    <span class="sc-title">Halaman Wajib</span>
+                  </div>
+                  <p>
+                    Beranda (hero editorial), Koleksi (katalog dengan filter
+                    ukuran/warna), Detail Produk, Keranjang, Tentang Brand, dan
+                    Kontak / WhatsApp Order.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #7c3aed">📱</div>
+                    <span class="sc-title">Shopping Experience Mobile</span>
+                  </div>
+                  <p>
+                    Mayoritas belanja fashion dilakukan lewat HP. Pastikan grid
+                    produk, tombol "Beli Sekarang", dan alur pemilihan ukuran
+                    nyaman dioperasikan dengan satu tangan.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #ec4899">✨</div>
+                    <span class="sc-title">Fitur Diferensiasi</span>
+                  </div>
+                  <p>
+                    Eksplorasi fitur: lookbook interaktif, size guide visual,
+                    badge "Limited Edition", atau section "Shop the Look" yang
+                    menampilkan outfit lengkap.
+                  </p>
+                </div>
+              </div>
+              <div class="web-example-label">
+                <span>🌐 Referensi Website Fashion</span>
+                <div class="wel-line"></div>
+              </div>
+              <div class="web-example-grid">
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="background: linear-gradient(135deg, #111, #333)"
+                  >
+                    ET
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Erigo Store</strong>
+                    <span>Brand fashion lokal Indonesia premium</span>
+                    <a href="https://erigostore.co.id/" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #1a1a2e, #4c1d95);
+                    "
+                  >
+                    HM
+                  </div>
+                  <div class="web-example-info">
+                    <strong>H&M Indonesia</strong>
+                    <span>UX katalog fashion e-commerce global</span>
+                    <a href="https://id.hm.com/id_id/" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #7c3aed, #ec4899);
+                    "
+                  >
+                    LK
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Lokalate / Cottonink</strong>
+                    <span>Brand fashion wanita Indonesia modern</span>
+                    <a href="https://cottonink.co.id" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #065f46, #10b981);
+                    "
+                  >
+                    EL
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Elzatta Hijab</strong>
+                    <span>Brand hijab lokal dengan website modern</span>
+                    <a href="https://elzatta.com" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  flex-wrap: wrap;
+                  margin-top: 16px;
+                "
+              >
+                <span class="tag tag-purple">User Persona</span>
+                <span class="tag tag-purple">User Flow</span>
+                <span class="tag tag-blue">Wireframe Desktop</span>
+                <span class="tag tag-blue">Wireframe Mobile</span>
+                <span class="tag tag-teal">Mockup Visual</span>
+                <span class="tag tag-teal">Style Guide</span>
+                <span class="tag tag-pink">Prototype Interaktif</span>
+                <span class="tag tag-pink">Presentasi</span>
               </div>
             </div>
           </div>
-          <div class="step-card">
-            <div class="step-content">
-              <h4>Version Control & Deployment</h4>
+        </div>
+        <!-- /group-1 -->
+
+        <!-- ════════════════════════════════════════════
+       KELOMPOK 3 — UMKM Jasa Desain / Studio Grafis
+  ════════════════════════════════════════════ -->
+        <div class="group-panel" id="group-2">
+          <div class="proyek-hero hero-3">
+            <div class="hero-emoji">🖌️</div>
+            <div class="case-badge">
+              <i data-lucide="users" style="width: 11px; height: 11px"></i>
+              Kelompok 3 — 6 s/d 7 Siswa
+            </div>
+            <h2>
+              UI/UX Design Website & Mobile<br />UMKM Jasa Desain / Studio
+              Desain Grafis
+            </h2>
+            <p class="hero-desc">
+              Ini tantangan unik — mendesain UI/UX untuk klien yang juga seorang
+              desainer. Website studio grafis harus membuktikan kemampuan lewat
+              tampilannya sendiri. Setiap piksel adalah portofolio.
+            </p>
+          </div>
+
+          <div class="studi-kasus-card">
+            <div
+              class="studi-header"
+              style="background: linear-gradient(135deg, #e6faf8, #ccf2ee)"
+            >
+              <div
+                class="studi-icon"
+                style="background: linear-gradient(135deg, #0f4c81, #00c2a8)"
+              >
+                🏠
+              </div>
+              <div>
+                <h3 style="color: #0a3560">Latar Belakang Studi Kasus</h3>
+                <p>
+                  Studio desain grafis lokal Surabaya yang ingin menarik klien
+                  lebih profesional
+                </p>
+              </div>
+            </div>
+            <div class="studi-body">
               <p>
-                Upload proyek ke GitHub, lakukan review kode antar anggota tim,
-                kemudian deploy ke Netlify. Dapatkan URL website yang dapat
-                diakses siapa saja.
+                Komunitas kreatif Surabaya terus berkembang — dari studio desain
+                branding di kawasan Darmo, freelancer grafis di Rungkut, hingga
+                agensi kecil di Sidoarjo yang melayani UMKM lokal. Paradoksnya,
+                banyak dari mereka yang
+                <strong>tidak memiliki website portofolio</strong> yang
+                mencerminkan kualitas kerja mereka.
               </p>
-              <div class="step-meta">
-                <span class="tag tag-orange">Pertemuan 7</span>
-                <span class="tag tag-teal">GitHub</span>
-                <span class="tag tag-teal">Netlify</span>
+              <p>
+                Kamu bertugas merancang
+                <strong
+                  >website portofolio dan profil studio desain grafis</strong
+                >
+                yang mampu meyakinkan calon klien bisnis bahwa studio ini adalah
+                pilihan terbaik — melalui desain yang bersih, profesional, dan
+                portofolio yang dipresentasikan dengan elegan.
+              </p>
+              <div class="deliverable-grid">
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #00c2a8"
+                >
+                  <strong>🎯 Klien</strong>Studio desain grafis / freelance
+                  designer Surabaya–Sidoarjo
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #00c2a8"
+                >
+                  <strong>📱 Platform</strong>Website portofolio desktop &
+                  mobile
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #00c2a8"
+                >
+                  <strong>🎨 Output</strong>Wireframe + Mockup + Prototype
+                  interaktif di Figma
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #00c2a8"
+                >
+                  <strong>📍 Konteks</strong>Pemilik bisnis & UMKM yang mencari
+                  jasa desain profesional
+                </div>
               </div>
             </div>
           </div>
-          <div class="step-card">
-            <div class="step-content">
-              <h4>Presentasi, Demo & Evaluasi</h4>
+
+          <div class="studi-kasus-card">
+            <div
+              class="studi-header"
+              style="background: linear-gradient(135deg, #e6faf8, #ccf2ee)"
+            >
+              <div
+                class="studi-icon"
+                style="background: linear-gradient(135deg, #0f4c81, #00c2a8)"
+              >
+                <i data-lucide="compass" style="width: 18px; height: 18px"></i>
+              </div>
+              <div>
+                <h3 style="color: #0a3560">Ruang Lingkup & Clue Pengerjaan</h3>
+                <p>
+                  Desain website yang membuktikan keahlian lewat tampilannya
+                  sendiri
+                </p>
+              </div>
+            </div>
+            <div class="studi-body">
+              <div class="scope-grid">
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #0f4c81">👤</div>
+                    <span class="sc-title">Siapa yang Menghubungi Studio?</span>
+                  </div>
+                  <p>
+                    Pemilik bisnis yang butuh logo? UMKM yang cari desainer
+                    kemasan? Pahami siapa pengambil keputusan yang mengunjungi
+                    website ini dan apa yang mereka cari.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #00c2a8">🖼️</div>
+                    <span class="sc-title">Portofolio yang Berbicara</span>
+                  </div>
+                  <p>
+                    Rancang galeri karya yang memukau: grid yang bersih, filter
+                    berdasarkan jenis proyek, dan lightbox yang memperlihatkan
+                    detail karya dengan sinematik.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #0f4c81">🎨</div>
+                    <span class="sc-title">Identitas Visual Studio</span>
+                  </div>
+                  <p>
+                    Studio grafis = kredibilitas visual. Pilih palet yang unik
+                    dan konsisten. Tipografi harus kuat. Setiap elemen desain
+                    harus terasa disengaja dan profesional.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #00c2a8">📋</div>
+                    <span class="sc-title">Halaman Wajib</span>
+                  </div>
+                  <p>
+                    Beranda (tagline + karya pilihan), Portofolio (galeri +
+                    kategori), Layanan (branding, desain kemasan, social media,
+                    dll.), Tentang Kami, dan Kontak / Form Brief.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #0f4c81">💼</div>
+                    <span class="sc-title">Konversi Klien</span>
+                  </div>
+                  <p>
+                    Desain alur yang membawa pengunjung dari "melihat
+                    portofolio" → "memahami layanan" → "mengisi form brief
+                    proyek" dengan mulus dan tanpa hambatan.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #00c2a8">📱</div>
+                    <span class="sc-title">Mobile Portfolio</span>
+                  </div>
+                  <p>
+                    Banyak klien melihat portofolio di HP saat meeting. Pastikan
+                    galeri tetap terlihat mengesankan di layar kecil, dengan
+                    navigasi yang mudah dan loading yang terasa cepat.
+                  </p>
+                </div>
+              </div>
+              <div class="web-example-label">
+                <span>🌐 Referensi Website Studio Desain</span>
+                <div class="wel-line"></div>
+              </div>
+              <div class="web-example-grid">
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #1a1a2e, #0f4c81);
+                    "
+                  >
+                    PT
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Pentagram Design</strong>
+                    <span>Studio desain global — portofolio premium</span>
+                    <a href="https://www.pentagram.com" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="background: linear-gradient(135deg, #111, #374151)"
+                  >
+                    AW
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Anyway Creative</strong>
+                    <span>Agensi desain Indonesia modern</span>
+                    <a href="https://anyway.id" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #0f4c81, #00c2a8);
+                    "
+                  >
+                    DP
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Dribbble Portfolio</strong>
+                    <span>Showcase portofolio desainer UI/UX</span>
+                    <a
+                      href="https://dribbble.com/tags/portfolio_website"
+                      target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #065f46, #10b981);
+                    "
+                  >
+                    BF
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Behance Featured</strong>
+                    <span>Referensi portofolio desain grafis terbaik</span>
+                    <a
+                      href="https://www.behance.net/galleries/graphic-design"
+                      target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  flex-wrap: wrap;
+                  margin-top: 16px;
+                "
+              >
+                <span class="tag tag-teal">User Persona</span>
+                <span class="tag tag-teal">User Flow</span>
+                <span class="tag tag-blue">Wireframe Desktop</span>
+                <span class="tag tag-blue">Wireframe Mobile</span>
+                <span class="tag tag-teal">Mockup Visual</span>
+                <span class="tag tag-teal">Style Guide</span>
+                <span class="tag tag-purple">Prototype Interaktif</span>
+                <span class="tag tag-purple">Presentasi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /group-2 -->
+
+        <!-- ════════════════════════════════════════════
+       KELOMPOK 4 — UMKM Fotografi & Videografi
+  ════════════════════════════════════════════ -->
+        <div class="group-panel" id="group-3">
+          <div class="proyek-hero hero-4">
+            <div class="hero-emoji">📷</div>
+            <div class="case-badge">
+              <i data-lucide="users" style="width: 11px; height: 11px"></i>
+              Kelompok 4 — 6 s/d 7 Siswa
+            </div>
+            <h2>
+              UI/UX Design Website & Mobile<br />UMKM Jasa Fotografi &
+              Videografi
+            </h2>
+            <p class="hero-desc">
+              Desain website untuk fotografer adalah seni tersendiri — gambar
+              harus berbicara paling keras, namun UI harus cukup halus untuk
+              tidak mengalihkan perhatian dari karya visual itu sendiri.
+            </p>
+          </div>
+
+          <div class="studi-kasus-card">
+            <div
+              class="studi-header"
+              style="background: linear-gradient(135deg, #f9f6f0, #f0e8d8)"
+            >
+              <div
+                class="studi-icon"
+                style="background: linear-gradient(135deg, #1a1a2e, #b45309)"
+              >
+                🏠
+              </div>
+              <div>
+                <h3 style="color: #78350f">Latar Belakang Studi Kasus</h3>
+                <p>
+                  Studio foto & videografi Surabaya yang ingin tampil lebih
+                  profesional secara digital
+                </p>
+              </div>
+            </div>
+            <div class="studi-body">
               <p>
-                Presentasikan proyek di depan kelas dengan demo live website.
-                Jelaskan proses pengerjaan, tantangan yang dihadapi, dan dampak
-                nyata bagi UMKM klien.
+                Surabaya memiliki ekosistem fotografer yang sangat aktif — dari
+                fotografer pernikahan di kawasan Pakuwon, studio foto produk di
+                MERR, hingga videografer konten kreatif di Sukolilo. Mereka
+                memiliki portofolio visual yang luar biasa, namun sering kali
+                <strong>ditampilkan hanya lewat Instagram</strong> tanpa website
+                profesional yang bisa menjelaskan layanan dan paket secara
+                lengkap.
               </p>
-              <div class="step-meta">
-                <span class="tag tag-orange">Pertemuan 8</span>
-                <span class="tag tag-blue">Presentasi</span>
-                <span class="tag tag-blue">Demo Live</span>
+              <p>
+                Tugasmu adalah merancang
+                <strong>website jasa fotografi/videografi</strong> yang
+                memperlihatkan karya terbaik mereka dengan dramatis, menjelaskan
+                paket layanan secara jelas, dan memudahkan calon klien untuk
+                menghubungi dan memesan sesi foto.
+              </p>
+              <div class="deliverable-grid">
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #b45309"
+                >
+                  <strong>🎯 Klien</strong>Studio foto / fotografer /
+                  videografer Surabaya–Sidoarjo
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #b45309"
+                >
+                  <strong>📱 Platform</strong>Website profil + portofolio,
+                  desktop & mobile
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #b45309"
+                >
+                  <strong>🎨 Output</strong>Wireframe + Mockup + Prototype
+                  interaktif di Figma
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #b45309"
+                >
+                  <strong>📍 Konteks</strong>Pasangan mau nikah, pemilik bisnis
+                  butuh foto produk, brand lokal
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="studi-kasus-card">
+            <div
+              class="studi-header"
+              style="background: linear-gradient(135deg, #f9f6f0, #f0e8d8)"
+            >
+              <div
+                class="studi-icon"
+                style="background: linear-gradient(135deg, #1a1a2e, #b45309)"
+              >
+                <i data-lucide="compass" style="width: 18px; height: 18px"></i>
+              </div>
+              <div>
+                <h3 style="color: #78350f">Ruang Lingkup & Clue Pengerjaan</h3>
+                <p>
+                  Visual is everything — desain setiap halaman seperti mengatur
+                  adegan foto
+                </p>
+              </div>
+            </div>
+            <div class="studi-body">
+              <div class="scope-grid">
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #1a1a2e">👤</div>
+                    <span class="sc-title">Tipe Klien Fotografer</span>
+                  </div>
+                  <p>
+                    Pasangan yang cari fotografer pernikahan? Pebisnis yang
+                    butuh foto produk? Atau brand yang cari videografer? Setiap
+                    segmen punya kebutuhan visual berbeda.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #b45309">🖼️</div>
+                    <span class="sc-title">Galeri yang Memukau</span>
+                  </div>
+                  <p>
+                    Ini inti dari website fotografer. Rancang galeri dengan
+                    full-screen image, hover efek halus, kategori (wedding,
+                    produk, portrait), dan lightbox yang imersif.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #1a1a2e">🎨</div>
+                    <span class="sc-title">Dark vs Light Theme</span>
+                  </div>
+                  <p>
+                    Banyak website fotografer pakai dark mode agar foto terlihat
+                    lebih dramatis. Pertimbangkan ini saat memilih palet dan
+                    background halaman.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #b45309">📋</div>
+                    <span class="sc-title">Halaman Wajib</span>
+                  </div>
+                  <p>
+                    Beranda (hero video/foto), Portofolio (galeri per kategori),
+                    Paket & Harga (yang transparan dan jelas), Tentang
+                    Fotografer, dan Booking / Kontak.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #1a1a2e">💰</div>
+                    <span class="sc-title">Paket & Harga yang Jelas</span>
+                  </div>
+                  <p>
+                    Calon klien sering meninggalkan website karena harga tidak
+                    jelas. Rancang halaman paket yang transparan dengan fitur,
+                    durasi, dan harga yang mudah dibandingkan.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #b45309">📱</div>
+                    <span class="sc-title">Booking via Mobile</span>
+                  </div>
+                  <p>
+                    Pasangan sering browsing fotografer di HP sambil diskusi.
+                    Pastikan halaman paket dan form booking sangat mudah
+                    digunakan di layar kecil.
+                  </p>
+                </div>
+              </div>
+              <div class="web-example-label">
+                <span>🌐 Referensi Website Fotografer</span>
+                <div class="wel-line"></div>
+              </div>
+              <div class="web-example-grid">
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="background: linear-gradient(135deg, #1a1a2e, #333)"
+                  >
+                    SQ
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Squarespace Photo Templates</strong>
+                    <span>Template website portofolio fotografer</span>
+                    <a
+                      href="https://www.squarespace.com/templates/photography"
+                      target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #b45309, #f59e0b);
+                    "
+                  >
+                    PX
+                  </div>
+                  <div class="web-example-info">
+                    <strong>500px Portfolio</strong>
+                    <span>Showcase portofolio fotografi profesional</span>
+                    <a href="https://500px.com" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="background: linear-gradient(135deg, #111, #374151)"
+                  >
+                    AS
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Aisha Studio Surabaya</strong>
+                    <span>Studio foto wedding Surabaya lokal</span>
+                    <a href="https://www.aishastudio.id" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #0f4c81, #1a6bb5);
+                    "
+                  >
+                    SC
+                  </div>
+                  <div class="web-example-info">
+                    <strong>SmugMug Photographer Site</strong>
+                    <span>Platform website untuk fotografer profesional</span>
+                    <a href="https://www.smugmug.com" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  flex-wrap: wrap;
+                  margin-top: 16px;
+                "
+              >
+                <span class="tag tag-orange">User Persona</span>
+                <span class="tag tag-orange">User Flow</span>
+                <span class="tag tag-blue">Wireframe Desktop</span>
+                <span class="tag tag-blue">Wireframe Mobile</span>
+                <span class="tag tag-teal">Mockup Visual</span>
+                <span class="tag tag-teal">Style Guide</span>
+                <span class="tag tag-purple">Prototype Interaktif</span>
+                <span class="tag tag-purple">Presentasi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /group-3 -->
+
+        <!-- ════════════════════════════════════════════
+       KELOMPOK 5 — UMKM Toko Skincare Lokal
+  ════════════════════════════════════════════ -->
+        <div class="group-panel" id="group-4">
+          <div class="proyek-hero hero-5">
+            <div class="hero-emoji">✨</div>
+            <div class="case-badge">
+              <i data-lucide="users" style="width: 11px; height: 11px"></i>
+              Kelompok 5 — 6 s/d 7 Siswa
+            </div>
+            <h2>UI/UX Design Website & Mobile<br />UMKM Toko Skincare Lokal</h2>
+            <p class="hero-desc">
+              Skincare lokal Indonesia sedang booming — tapi persaingannya
+              ketat. Desain yang bersih, tone warna yang tepat, dan informasi
+              produk yang lengkap bisa jadi pembeda antara brand yang dipercaya
+              dan yang dilewati begitu saja.
+            </p>
+          </div>
+
+          <div class="studi-kasus-card">
+            <div
+              class="studi-header"
+              style="background: linear-gradient(135deg, #fff0f6, #fce7f3)"
+            >
+              <div
+                class="studi-icon"
+                style="background: linear-gradient(135deg, #be185d, #fb7185)"
+              >
+                🏠
+              </div>
+              <div>
+                <h3 style="color: #831843">Latar Belakang Studi Kasus</h3>
+                <p>
+                  Brand skincare lokal Surabaya yang ingin memenangkan
+                  kepercayaan pelanggan digital
+                </p>
+              </div>
+            </div>
+            <div class="studi-body">
+              <p>
+                Tren skincare lokal terus tumbuh — banyak brand skincare
+                berbasis bahan alami bermunculan dari Surabaya dan Sidoarjo,
+                menargetkan pasar remaja dan dewasa muda yang sadar kulit.
+                Namun, untuk bersaing di era digital,
+                <strong>kepercayaan dibangun lewat tampilan</strong>. Website
+                yang terlihat amatir langsung membuat calon pembeli ragu pada
+                kualitas produknya.
+              </p>
+              <p>
+                Kamu bertugas merancang
+                <strong>website toko skincare lokal</strong> yang memancarkan
+                kesan bersih, terpercaya, dan premium — sambil tetap mudah
+                digunakan untuk belanja online, mencari informasi produk, dan
+                memahami manfaat masing-masing item.
+              </p>
+              <div class="deliverable-grid">
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #be185d"
+                >
+                  <strong>🎯 Klien</strong>Brand / toko skincare lokal
+                  Surabaya–Sidoarjo
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #be185d"
+                >
+                  <strong>📱 Platform</strong>Website toko online desktop &
+                  mobile
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #be185d"
+                >
+                  <strong>🎨 Output</strong>Wireframe + Mockup + Prototype
+                  interaktif di Figma
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #be185d"
+                >
+                  <strong>📍 Konteks</strong>Remaja & dewasa muda Surabaya, usia
+                  16–30 tahun
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="studi-kasus-card">
+            <div
+              class="studi-header"
+              style="background: linear-gradient(135deg, #fff0f6, #fce7f3)"
+            >
+              <div
+                class="studi-icon"
+                style="background: linear-gradient(135deg, #be185d, #fb7185)"
+              >
+                <i data-lucide="compass" style="width: 18px; height: 18px"></i>
+              </div>
+              <div>
+                <h3 style="color: #831843">Ruang Lingkup & Clue Pengerjaan</h3>
+                <p>
+                  Bangun kepercayaan lewat desain yang bersih, informatif, dan
+                  meyakinkan
+                </p>
+              </div>
+            </div>
+            <div class="studi-body">
+              <div class="scope-grid">
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #be185d">👤</div>
+                    <span class="sc-title">Profil Pembeli Skincare</span>
+                  </div>
+                  <p>
+                    Siapa yang beli skincare online? Remaja cari solusi jerawat?
+                    Wanita karier cari anti-aging? Skincare sangat niche —
+                    persona yang tepat menentukan seluruh arah desain.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #fb7185">💊</div>
+                    <span class="sc-title">Informasi Produk yang Lengkap</span>
+                  </div>
+                  <p>
+                    Pembeli skincare sangat detail — mereka ingin tahu
+                    kandungan, cara pakai, cocok untuk kulit apa, dan ulasan
+                    nyata. Rancang halaman produk yang menjawab semua ini.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #be185d">🎨</div>
+                    <span class="sc-title">Tone & Mood Visual</span>
+                  </div>
+                  <p>
+                    Skincare identik dengan warna-warna clean: putih, nude,
+                    blush pink, sage green, atau lavender. Hindari warna terlalu
+                    ramai yang merusak kesan bersih dan terpercaya.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #fb7185">📋</div>
+                    <span class="sc-title">Halaman Wajib</span>
+                  </div>
+                  <p>
+                    Beranda (hero + benefit utama), Produk (filter jenis
+                    kulit/masalah kulit), Detail Produk (kandungan + cara pakai
+                    + ulasan), Skin Quiz, Tentang Brand, dan Kontak.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #be185d">⭐</div>
+                    <span class="sc-title">Social Proof & Kepercayaan</span>
+                  </div>
+                  <p>
+                    Rancang section untuk testimoni dengan foto before-after,
+                    rating produk, sertifikasi BPOM, dan badge "Bahan Alami".
+                    Kepercayaan adalah kunci konversi skincare.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #fb7185">📱</div>
+                    <span class="sc-title">Mobile Shopping Skincare</span>
+                  </div>
+                  <p>
+                    Mayoritas beli skincare lewat HP. Pastikan halaman produk,
+                    perbandingan produk, dan proses checkout terasa mulus di
+                    layar kecil — tidak ada informasi penting yang tersembunyi.
+                  </p>
+                </div>
+              </div>
+              <div class="web-example-label">
+                <span>🌐 Referensi Website Skincare</span>
+                <div class="wel-line"></div>
+              </div>
+              <div class="web-example-grid">
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #be185d, #fb7185);
+                    "
+                  >
+                    SC
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Scarlett Whitening</strong>
+                    <span>Brand skincare lokal Indonesia terpopuler</span>
+                    <a href="https://scarlett-whitening.com" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #065f46, #10b981);
+                    "
+                  >
+                    VR
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Somethinc</strong>
+                    <span>Brand skincare modern Indonesia</span>
+                    <a href="https://www.somethinc.com" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+                    "
+                  >
+                    YS
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Y.O.U Beauty</strong>
+                    <span>Website beauty brand lokal yang clean</span>
+                    <a href="https://youbeauty.id" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #f9f0e3, #b45309);
+                    "
+                  >
+                    EM
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Emina Cosmetics</strong>
+                    <span>Brand kosmetik lokal untuk remaja</span>
+                    <a href="https://www.eminacosmetics.com" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  flex-wrap: wrap;
+                  margin-top: 16px;
+                "
+              >
+                <span class="tag tag-pink">User Persona</span>
+                <span class="tag tag-pink">User Flow</span>
+                <span class="tag tag-blue">Wireframe Desktop</span>
+                <span class="tag tag-blue">Wireframe Mobile</span>
+                <span class="tag tag-teal">Mockup Visual</span>
+                <span class="tag tag-teal">Style Guide</span>
+                <span class="tag tag-purple">Prototype Interaktif</span>
+                <span class="tag tag-purple">Presentasi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /group-4 -->
+
+        <!-- ════════════════════════════════════════════
+       KELOMPOK 6 — UMKM Kerajinan Tangan / Kriya
+  ════════════════════════════════════════════ -->
+        <div class="group-panel" id="group-5">
+          <div class="proyek-hero hero-6">
+            <div class="hero-emoji">🧶</div>
+            <div class="case-badge">
+              <i data-lucide="users" style="width: 11px; height: 11px"></i>
+              Kelompok 6 — 6 s/d 7 Siswa
+            </div>
+            <h2>
+              UI/UX Design Website & Mobile<br />UMKM Kerajinan Tangan & Kriya
+            </h2>
+            <p class="hero-desc">
+              Kerajinan tangan mengandung cerita, nilai budaya, dan keterampilan
+              yang tak ternilai. Tugasmu adalah membangun platform digital yang
+              merawat keindahan itu — menjual bukan sekadar produk, tapi warisan
+              dan makna di baliknya.
+            </p>
+          </div>
+
+          <div class="studi-kasus-card">
+            <div
+              class="studi-header"
+              style="background: linear-gradient(135deg, #f0fff4, #dcfce7)"
+            >
+              <div
+                class="studi-icon"
+                style="background: linear-gradient(135deg, #386641, #a7c957)"
+              >
+                🏠
+              </div>
+              <div>
+                <h3 style="color: #14532d">Latar Belakang Studi Kasus</h3>
+                <p>
+                  Pengrajin dan pekerja kriya Sidoarjo yang perlu menjangkau
+                  pasar lebih luas
+                </p>
+              </div>
+            </div>
+            <div class="studi-body">
+              <p>
+                Sidoarjo dikenal sebagai pusat kerajinan Jawa Timur — dari
+                <strong>kerajinan tas kulit Tanggulangin</strong>,
+                <strong>batik tulis</strong>, hingga berbagai kerajinan bambu
+                dan anyaman dari pengrajin lokal. Produk-produk ini memiliki
+                nilai budaya dan kualitas tinggi, namun sering kalah bersaing di
+                pasar modern karena
+                <strong>tampilan digital yang belum menarik</strong>.
+              </p>
+              <p>
+                Kamu bertugas merancang
+                <strong>website toko dan galeri online produk kriya</strong>
+                yang memperlihatkan keindahan dan keunikan setiap produk,
+                menceritakan kisah di balik pembuatannya, dan memudahkan pembeli
+                — termasuk dari luar kota — untuk memesan produk asli buatan
+                tangan pengrajin Sidoarjo.
+              </p>
+              <div class="deliverable-grid">
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #386641"
+                >
+                  <strong>🎯 Klien</strong>UMKM kerajinan tangan / kriya
+                  Sidoarjo (Tanggulangin / Krian)
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #386641"
+                >
+                  <strong>📱 Platform</strong>Website toko & galeri, desktop &
+                  mobile
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #386641"
+                >
+                  <strong>🎨 Output</strong>Wireframe + Mockup + Prototype
+                  interaktif di Figma
+                </div>
+                <div
+                  class="deliverable-item"
+                  style="border-left-color: #386641"
+                >
+                  <strong>📍 Konteks</strong>Pecinta produk lokal, wisatawan,
+                  pembeli suvenir dari luar kota
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="studi-kasus-card">
+            <div
+              class="studi-header"
+              style="background: linear-gradient(135deg, #f0fff4, #dcfce7)"
+            >
+              <div
+                class="studi-icon"
+                style="background: linear-gradient(135deg, #386641, #a7c957)"
+              >
+                <i data-lucide="compass" style="width: 18px; height: 18px"></i>
+              </div>
+              <div>
+                <h3 style="color: #14532d">Ruang Lingkup & Clue Pengerjaan</h3>
+                <p>
+                  Jual produk dan kisahnya sekaligus — melalui desain yang
+                  hangat dan bercerita
+                </p>
+              </div>
+            </div>
+            <div class="studi-body">
+              <div class="scope-grid">
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #386641">👤</div>
+                    <span class="sc-title">Siapa Pembeli Produk Kriya?</span>
+                  </div>
+                  <p>
+                    Kolektor produk lokal? Turis yang cari oleh-oleh otentik?
+                    Corporate yang butuh suvenir premium? Masing-masing punya
+                    kebutuhan informasi dan desain yang berbeda.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div
+                      class="sc-icon"
+                      style="background: #a7c957; color: #1a2e0a"
+                    >
+                      📖
+                    </div>
+                    <span class="sc-title">Ceritakan Kisah Pengrajin</span>
+                  </div>
+                  <p>
+                    Produk kriya bukan sekadar barang — ada cerita, tradisi, dan
+                    keahlian di baliknya. Rancang section storytelling yang
+                    memperkenalkan pengrajin dan proses pembuatan secara visual.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #386641">🎨</div>
+                    <span class="sc-title">Palette & Estetika Organik</span>
+                  </div>
+                  <p>
+                    Gunakan warna-warna earthy yang mencerminkan produk alami:
+                    hijau sage, coklat tanah, krem, dan aksen emas. Hindari
+                    warna digital yang terlalu modern dan terasa kontras.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div
+                      class="sc-icon"
+                      style="background: #a7c957; color: #1a2e0a"
+                    >
+                      📋
+                    </div>
+                    <span class="sc-title">Halaman Wajib</span>
+                  </div>
+                  <p>
+                    Beranda (hero + tagline budaya), Koleksi (katalog produk +
+                    filter kategori), Detail Produk (foto close-up + cerita +
+                    material), Tentang Pengrajin, dan Pemesanan / Kontak.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div class="sc-icon" style="background: #386641">🏷️</div>
+                    <span class="sc-title">Kejelasan Informasi Produk</span>
+                  </div>
+                  <p>
+                    Pembeli online tidak bisa memegang produk. Rancang detail
+                    produk yang sangat informatif: dimensi, material, proses
+                    pembuatan, waktu pengerjaan, dan cara perawatan.
+                  </p>
+                </div>
+                <div class="scope-card">
+                  <div class="sc-top">
+                    <div
+                      class="sc-icon"
+                      style="background: #a7c957; color: #1a2e0a"
+                    >
+                      📦
+                    </div>
+                    <span class="sc-title">Custom Order Experience</span>
+                  </div>
+                  <p>
+                    Kerajinan tangan sering dipesan custom. Rancang alur
+                    pemesanan khusus yang memudahkan pembeli menspesifikasikan
+                    ukuran, warna, motif, atau personalisasi produk.
+                  </p>
+                </div>
+              </div>
+              <div class="web-example-label">
+                <span>🌐 Referensi Website Kerajinan / Kriya</span>
+                <div class="wel-line"></div>
+              </div>
+              <div class="web-example-grid">
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #386641, #a7c957);
+                    "
+                  >
+                    ET
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Etsy — Handmade Marketplace</strong>
+                    <span>Referensi UX toko produk kerajinan global</span>
+                    <a href="https://www.etsy.com" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #78350f, #b45309);
+                    "
+                  >
+                    TG
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Tanggulangin Craft (referensi)</strong>
+                    <span>Kerajinan tas kulit khas Sidoarjo</span>
+                    <a
+                      href="https://www.tokopedia.com/search?q=tanggulangin+tas"
+                      target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #1a2e0a, #386641);
+                    "
+                  >
+                    DN
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Dekranas — Dewan Kerajinan Nasional</strong>
+                    <span>Portal kerajinan Indonesia resmi</span>
+                    <a href="https://www.dekranas.id" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+                <div class="web-example-card">
+                  <div
+                    class="web-example-thumb"
+                    style="
+                      background: linear-gradient(135deg, #4a1942, #7c3aed);
+                    "
+                  >
+                    BT
+                  </div>
+                  <div class="web-example-info">
+                    <strong>Batik Keris</strong>
+                    <span>Website produk batik & kriya lokal Indonesia</span>
+                    <a href="https://www.batikkeris.co.id" target="_blank"
+                      ><i
+                        data-lucide="external-link"
+                        style="width: 10px; height: 10px"
+                      ></i>
+                      Lihat</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  flex-wrap: wrap;
+                  margin-top: 16px;
+                "
+              >
+                <span class="tag tag-green">User Persona</span>
+                <span class="tag tag-green">User Flow</span>
+                <span class="tag tag-blue">Wireframe Desktop</span>
+                <span class="tag tag-blue">Wireframe Mobile</span>
+                <span class="tag tag-teal">Mockup Visual</span>
+                <span class="tag tag-teal">Style Guide</span>
+                <span class="tag tag-purple">Prototype Interaktif</span>
+                <span class="tag tag-purple">Presentasi</span>
               </div>
             </div>
           </div>
@@ -7545,6 +9596,31 @@
       function openYT(id) {
         window.open("https://www.youtube.com/watch?v=" + id, "_blank");
       }
+
+      // ================= PROYEK =================
+      function showGroup(index, btn) {
+        // Panels
+        document
+          .querySelectorAll(".group-panel")
+          .forEach((p) => p.classList.remove("active"));
+        document.getElementById("group-" + index).classList.add("active");
+        // Buttons
+        document.querySelectorAll(".group-btn").forEach((b) => {
+          b.classList.remove("active");
+          b.style.color = "";
+        });
+        btn.classList.add("active");
+        btn.style.color = "white";
+        // Scroll to top of panel area smoothly
+        document
+          .getElementById("group-" + index)
+          .scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      // Set initial active button style
+      document.querySelectorAll(".group-btn").forEach((btn, i) => {
+        if (i === 0) btn.style.color = "white";
+      });
 
       // ================= FILE UPLOAD =================
       function handleFileSelect(e) {
