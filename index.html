@@ -4032,115 +4032,166 @@
       }
 
       /* ═══════════════════════════════════════════
-       INFO BAR
+       PETUNJUK PENGUMPULAN — redesigned
     ═══════════════════════════════════════════ */
-      .intro-bar {
-        display: flex;
-        align-items: center;
-        gap: 14px;
+      .panduan-card {
         background: var(--white);
         border-radius: var(--radius);
         border: 1px solid var(--border);
         box-shadow: var(--shadow);
-        padding: 18px 24px;
-        margin-bottom: 26px;
-        flex-wrap: wrap;
+        margin-bottom: 24px;
+        overflow: hidden;
       }
-      .intro-bar-icon {
-        width: 42px;
-        height: 42px;
-        background: linear-gradient(135deg, #00c2a8, #0f4c81);
-        border-radius: 12px;
+
+      /* collapsible header */
+      .panduan-head {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 22px;
+        cursor: pointer;
+        transition: background 0.18s;
+        user-select: none;
+      }
+      .panduan-head:hover {
+        background: var(--surface2);
+      }
+      .panduan-head-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+        background: linear-gradient(135deg, #0f4c81, #00c2a8);
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
         flex-shrink: 0;
       }
-      .intro-bar-text h4 {
+      .panduan-head-text {
+        flex: 1;
+      }
+      .panduan-head-text h4 {
         font-family: var(--font-display);
         font-size: 0.92rem;
-        font-weight: 700;
+        font-weight: 800;
         color: var(--primary);
       }
-      .intro-bar-text p {
-        font-size: 0.8rem;
+      .panduan-head-text p {
+        font-size: 0.76rem;
         color: var(--text-muted);
         margin-top: 2px;
       }
-      .intro-bar-badge {
-        margin-left: auto;
-        background: linear-gradient(135deg, #e0f9f6, #d5f0ff);
-        border: 1px solid #a8e6cf;
-        border-radius: 20px;
-        padding: 6px 14px;
-        font-size: 0.77rem;
-        font-weight: 700;
-        color: #0f6b5c;
-        white-space: nowrap;
+      .panduan-head-right {
         display: flex;
         align-items: center;
-        gap: 6px;
-      }
-
-      /* ═══════════════════════════════════════════
-       PROGRESS BAR
-    ═══════════════════════════════════════════ */
-      .progress-summary {
-        background: var(--white);
-        border-radius: var(--radius);
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow);
-        padding: 20px 24px;
-        margin-bottom: 28px;
-      }
-      .progress-summary h4 {
-        font-family: var(--font-display);
-        font-size: 0.9rem;
-        font-weight: 800;
-        color: var(--primary);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 12px;
-      }
-      .progress-bar-wrap {
-        background: var(--surface2);
-        border-radius: 100px;
-        height: 8px;
-        overflow: hidden;
-        margin-bottom: 10px;
-      }
-      .progress-bar-fill {
-        height: 100%;
-        border-radius: 100px;
-        background: var(--gradient);
-        width: 0%;
-        transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .progress-stats {
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-      }
-      .progress-stat {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.79rem;
-        color: var(--text-muted);
-      }
-      .psdot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
+        gap: 10px;
         flex-shrink: 0;
       }
-      .psdot.done {
-        background: var(--success);
+      .panduan-badge {
+        background: linear-gradient(135deg, #e0f9f6, #dbeafe);
+        border: 1px solid #a8e6cf;
+        border-radius: 100px;
+        padding: 5px 12px;
+        font-size: 0.74rem;
+        font-weight: 700;
+        color: #0f6b5c;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        white-space: nowrap;
       }
-      .psdot.pending {
-        background: var(--border);
+      .panduan-chevron {
+        color: var(--text-muted);
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .panduan-card.open .panduan-chevron {
+        transform: rotate(180deg);
+      }
+
+      /* collapsible body */
+      .panduan-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+        border-top: 0px solid var(--border);
+      }
+      .panduan-card.open .panduan-body {
+        max-height: 600px;
+        border-top-width: 1px;
+      }
+      .panduan-inner {
+        padding: 18px 22px 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      @media (max-width: 600px) {
+        .panduan-inner {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* step group */
+      .step-group-label {
+        font-family: var(--font-display);
+        font-size: 0.7rem;
+        font-weight: 800;
+        color: var(--text-muted);
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .step-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .step-item {
+        display: flex;
+        gap: 11px;
+        align-items: flex-start;
+      }
+      .step-num {
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+        background: var(--gradient);
+        color: white;
+        font-family: var(--font-display);
+        font-size: 0.67rem;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .step-num.accent {
+        background: linear-gradient(135deg, #7c3aed, #00c2a8);
+      }
+      .step-text {
+        font-size: 0.8rem;
+        color: #374151;
+        line-height: 1.6;
+      }
+      .step-text strong {
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      /* warning note */
+      .panduan-note {
+        margin: 0 22px 18px;
+        display: flex;
+        gap: 9px;
+        align-items: flex-start;
+        background: #fffbeb;
+        border: 1px solid #fcd34d;
+        border-radius: 10px;
+        padding: 10px 13px;
+        font-size: 0.77rem;
+        color: #92400e;
+        line-height: 1.6;
       }
 
       /* ═══════════════════════════════════════════
@@ -11230,7 +11281,7 @@
     </div>
 
     <!-- ═══════════ PAGE: PENGUMPULAN ═══════════ -->
-    <div class="page active" id="page-pengumpulan">
+    <div class="page" id="page-pengumpulan">
       <div class="section-wrap">
         <!-- HEADER -->
         <div class="section-header">
@@ -11243,42 +11294,126 @@
           </div>
         </div>
 
-        <!-- INTRO BAR -->
-        <div class="intro-bar">
-          <div class="intro-bar-icon">
-            <i data-lucide="info" style="width: 18px; height: 18px"></i>
-          </div>
-          <div class="intro-bar-text">
-            <h4>Petunjuk Pengumpulan Proyek</h4>
-            <p>
-              Paste link Prototype Figma pada card kelompokmu, lalu tekan
-              Submit. Pastikan link sudah diset ke
-              <strong>Anyone with the link can view</strong>.
-            </p>
-          </div>
-          <div class="intro-bar-badge">
-            <i data-lucide="check-circle" style="width: 12px; height: 12px"></i>
-            <span id="globalBadge">0 / 6 Terkumpul</span>
-          </div>
-        </div>
-
-        <!-- PROGRESS -->
-        <div class="progress-summary">
-          <h4>
-            <i data-lucide="bar-chart-2" style="width: 16px; height: 16px"></i>
-            Progress Pengumpulan
-          </h4>
-          <div class="progress-bar-wrap">
-            <div class="progress-bar-fill" id="progressFill"></div>
-          </div>
-          <div class="progress-stats">
-            <div class="progress-stat">
-              <span class="psdot done"></span>
-              <span id="statDone">0 Terkumpul</span>
+        <!-- ═══ PANDUAN CARD (collapsible) ═══ -->
+        <div class="panduan-card open" id="panduanCard">
+          <div class="panduan-head" onclick="togglePanduan()">
+            <div class="panduan-head-icon">
+              <i data-lucide="info" style="width: 18px; height: 18px"></i>
             </div>
-            <div class="progress-stat">
-              <span class="psdot pending"></span>
-              <span id="statPending">6 Belum</span>
+            <div class="panduan-head-text">
+              <h4>Petunjuk Pengumpulan Proyek</h4>
+              <p>Baca langkah-langkah berikut sebelum mengumpulkan</p>
+            </div>
+            <div class="panduan-head-right">
+              <div class="panduan-badge" id="globalBadge">
+                <i
+                  data-lucide="check-circle"
+                  style="width: 11px; height: 11px"
+                ></i>
+                <span id="globalBadgeText">0 / 6 Terkumpul</span>
+              </div>
+              <div class="panduan-chevron">
+                <i
+                  data-lucide="chevron-down"
+                  style="width: 17px; height: 17px"
+                ></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="panduan-body" id="panduanBody">
+            <div class="panduan-inner">
+              <!-- Kolom Kiri: Persiapan -->
+              <div>
+                <div class="step-group-label">Persiapan Sebelum Submit</div>
+                <div class="step-list">
+                  <div class="step-item">
+                    <div class="step-num">1</div>
+                    <div class="step-text">
+                      Pastikan desain UI/UX website dan mobile sudah
+                      <strong>selesai sepenuhnya</strong> di Figma — minimal 3
+                      halaman (Beranda, Produk/Layanan, Kontak)
+                    </div>
+                  </div>
+                  <div class="step-item">
+                    <div class="step-num">2</div>
+                    <div class="step-text">
+                      Buat <strong>Prototype interaktif</strong> di Figma dengan
+                      menghubungkan setiap frame agar bisa diklik layaknya
+                      website sungguhan
+                    </div>
+                  </div>
+                  <div class="step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-text">
+                      Set izin akses file Figma ke
+                      <strong>Anyone with the link can view</strong> agar dapat
+                      dibuka oleh siapapun tanpa login
+                    </div>
+                  </div>
+                  <div class="step-item">
+                    <div class="step-num">4</div>
+                    <div class="step-text">
+                      Klik <strong>Share Prototype</strong> di pojok kanan atas
+                      Figma, lalu salin link yang muncul
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Kolom Kanan: Cara Submit -->
+              <div>
+                <div class="step-group-label">Cara Mengumpulkan</div>
+                <div class="step-list">
+                  <div class="step-item">
+                    <div class="step-num accent">A</div>
+                    <div class="step-text">
+                      Temukan <strong>card kelompokmu</strong> di bawah
+                      (Kelompok 1 s/d Kelompok 6 sesuai studi kasus UMKM)
+                    </div>
+                  </div>
+                  <div class="step-item">
+                    <div class="step-num accent">B</div>
+                    <div class="step-text">
+                      Paste link Prototype Figma pada
+                      <strong>kolom input</strong> yang tersedia di card
+                      kelompokmu, lalu tekan tombol <strong>Submit</strong>
+                    </div>
+                  </div>
+                  <div class="step-item">
+                    <div class="step-num accent">C</div>
+                    <div class="step-text">
+                      Setelah berhasil, link akan
+                      <strong>tampil di card</strong> dan dapat diakses
+                      langsung. Status card berubah menjadi
+                      <strong>Terkumpul</strong>
+                    </div>
+                  </div>
+                  <div class="step-item">
+                    <div class="step-num accent">D</div>
+                    <div class="step-text">
+                      Jika perlu memperbaiki link, klik tombol
+                      <strong>Ganti link</strong> yang muncul di bawah link yang
+                      sudah tersimpan
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panduan-note">
+              <i
+                data-lucide="alert-triangle"
+                style="
+                  width: 14px;
+                  height: 14px;
+                  flex-shrink: 0;
+                  margin-top: 1px;
+                "
+              ></i>
+              <span
+                >Batas pengumpulan: <strong>Pertemuan ke-8</strong>. Pastikan
+                link sudah bisa dibuka di browser sebelum submit. Satu kelompok
+                hanya perlu mengumpulkan satu kali melalui satu perangkat.</span
+              >
             </div>
           </div>
         </div>
@@ -11312,9 +11447,13 @@
 
       lucide.createIcons();
 
-      /* ═══════════════════════════════════════
-     DATA KELOMPOK
-  ═══════════════════════════════════════ */
+      // ================= PANDUAN TOGGLE =================
+      function togglePanduan() {
+        document.getElementById("panduanCard").classList.toggle("open");
+        lucide.createIcons();
+      }
+
+      // ================= DATA KELOMPOK =================
       const GROUPS = [
         {
           id: 1,
@@ -11366,9 +11505,7 @@
         },
       ];
 
-      /* ═══════════════════════════════════════
-     localStorage KEY
-  ═══════════════════════════════════════ */
+      // ================= LOCALSTORAGE KEY =================
       const STORE_KEY = "figma_links_v1";
 
       function loadLinks() {
@@ -11382,9 +11519,7 @@
         localStorage.setItem(STORE_KEY, JSON.stringify(obj));
       }
 
-      /* ═══════════════════════════════════════
-     RENDER CARDS
-  ═══════════════════════════════════════ */
+      // ================= RENDER CARDS =================
       function renderCards() {
         const grid = document.getElementById("kelompokGrid");
         const links = loadLinks();
@@ -11484,9 +11619,7 @@
         updateProgress();
       }
 
-      /* ═══════════════════════════════════════
-     SUBMIT LINK
-  ═══════════════════════════════════════ */
+      // ================= SUBMIT LINK =================
       function submitLink(gid) {
         const input = document.getElementById(`inp-${gid}`);
         const val = input.value.trim();
@@ -11561,9 +11694,7 @@
         }, 800);
       }
 
-      /* ═══════════════════════════════════════
-     REDO SUBMIT (ganti link)
-  ═══════════════════════════════════════ */
+      // ================= REDO SUBMIT (ganti link) =================
       function redoSubmit(gid) {
         const links = loadLinks();
         const prev = links[gid] || "";
@@ -11601,33 +11732,13 @@
         inp.focus();
       }
 
-      /* ═══════════════════════════════════════
-     CLEAR ERROR ON INPUT
-  ═══════════════════════════════════════ */
+      // ================= CLEAR ERROR ON INPUT =================
       function clearErr(gid) {
         document.getElementById(`inp-${gid}`).classList.remove("err");
         document.getElementById(`err-${gid}`).classList.remove("show");
       }
 
-      /* ═══════════════════════════════════════
-     UPDATE PROGRESS BAR
-  ═══════════════════════════════════════ */
-      function updateProgress() {
-        const links = loadLinks();
-        const done = Object.keys(links).length;
-        const pct = (done / 6) * 100;
-
-        document.getElementById("progressFill").style.width = pct + "%";
-        document.getElementById("statDone").textContent = done + " Terkumpul";
-        document.getElementById("statPending").textContent =
-          6 - done + " Belum";
-        document.getElementById("globalBadge").textContent =
-          done + " / 6 Terkumpul";
-      }
-
-      /* ═══════════════════════════════════════
-     INIT
-  ═══════════════════════════════════════ */
+      // ================= INIT =================
       renderCards();
 
       // ================= NAVIGATION =================
