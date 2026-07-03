@@ -4846,6 +4846,77 @@
       <!-- /nav-inner -->
     </nav>
 
+    <!-- ══ MOBILE DRAWER ══ -->
+    <div class="nav-drawer" id="navDrawer">
+      <div class="drawer-grid">
+        <button
+          class="drawer-tab active"
+          onclick="
+            showPage(event, 'home');
+            closeDrawer();
+          "
+          data-drawer-page="home"
+        >
+          <i data-lucide="home" style="width: 15px; height: 15px"></i> Home
+        </button>
+        <button
+          class="drawer-tab"
+          onclick="
+            showPage(event, 'materi');
+            closeDrawer();
+          "
+          data-drawer-page="materi"
+        >
+          <i data-lucide="book-open" style="width: 15px; height: 15px"></i>
+          Materi
+        </button>
+        <button
+          class="drawer-tab"
+          onclick="
+            showPage(event, 'jadwal');
+            closeDrawer();
+          "
+          data-drawer-page="jadwal"
+        >
+          <i data-lucide="calendar" style="width: 15px; height: 15px"></i>
+          Jadwal
+        </button>
+        <button
+          class="drawer-tab"
+          onclick="
+            showPage(event, 'tutorial');
+            closeDrawer();
+          "
+          data-drawer-page="tutorial"
+        >
+          <i data-lucide="play-circle" style="width: 15px; height: 15px"></i>
+          Tutorial
+        </button>
+        <button
+          class="drawer-tab"
+          onclick="
+            showPage(event, 'proyek');
+            closeDrawer();
+          "
+          data-drawer-page="proyek"
+        >
+          <i data-lucide="briefcase" style="width: 15px; height: 15px"></i>
+          Proyek
+        </button>
+        <button
+          class="drawer-tab"
+          onclick="
+            showPage(event, 'pengumpulan');
+            closeDrawer();
+          "
+          data-drawer-page="pengumpulan"
+        >
+          <i data-lucide="upload-cloud" style="width: 15px; height: 15px"></i>
+          Kumpul
+        </button>
+      </div>
+    </div>
+
     <!-- ═══════════ PAGE: HOME ═══════════ -->
     <div class="page active" id="page-home">
       <!-- ── HERO — tidak diubah ── -->
@@ -12321,6 +12392,35 @@
         const pct = idx < 0 ? 0 : (idx / (PAGE_ORDER.length - 1)) * 100;
         document.getElementById("navProgressFill").style.width = pct + "%";
       }
+
+      /* ==========================================
+   MOBILE DRAWER
+========================================== */
+
+      const navDrawer = document.getElementById("navDrawer");
+
+      /* Membuka Drawer */
+      function openDrawer() {
+        navDrawer.classList.add("active");
+      }
+
+      /* Menutup Drawer */
+      function closeDrawer() {
+        navDrawer.classList.remove("active");
+      }
+
+      /* Klik di luar drawer untuk menutup */
+      document.addEventListener("click", function (e) {
+        const menuBtn = document.querySelector(".menu-btn");
+
+        if (
+          navDrawer.classList.contains("active") &&
+          !navDrawer.contains(e.target) &&
+          (!menuBtn || !menuBtn.contains(e.target))
+        ) {
+          closeDrawer();
+        }
+      });
 
       /* ═══════════════════════════════════════
      showPage — fungsi navigasi utama (tidak diubah substansinya)
